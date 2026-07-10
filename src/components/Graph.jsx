@@ -11,14 +11,25 @@ export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray,
    const controls = useAnimation()
 
    useEffect(() => {
-      if (localStorage.getItem(storageKey)) {
-         return
-      } else {
-         controls.start({ opacity: 0 })
+      let isMounted = true;
 
-         setTimeout(() => {
-            controls.start({ opacity: 1 })
-         }, 200)
+      if (!localStorage.getItem(storageKey)) {
+         try {
+            controls.start({ opacity: 0 })
+
+            const timer = setTimeout(() => {
+               if (isMounted) {
+                  controls.start({ opacity: 1 })
+               }
+            }, 200)
+
+            return () => {
+               isMounted = false;
+               clearTimeout(timer);
+            }
+         } catch (error) {
+            console.warn("Animation übersprungen: Element nicht bereit.", error);
+         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [selectedCurrency1])
