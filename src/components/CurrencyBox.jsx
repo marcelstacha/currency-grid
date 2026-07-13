@@ -7,9 +7,9 @@ export default function CurrencyBox({ textValue, handleTextField, currencySymbol
    let textValue2 = parseFloat(textValue.replace(',', '.')) * latest
 
    return (<>
-      <div className="currency-box-label">
+      {/*<div className="currency-box-label">
          {getFullCurrencyName(selectedCurrency1)}
-      </div>
+      </div>*/}
       <div className="currency-box">
 
          <input value={textValue} placeholder="Wert" onChange={handleTextField} type="number"></input>
@@ -41,8 +41,8 @@ export default function CurrencyBox({ textValue, handleTextField, currencySymbol
          </div>
 
       </div>
-      <div className="currency-box-label">
+      {/*<div className="currency-box-label">
          {getFullCurrencyName(selectedCurrency2)}
-      </div>
+      </div>*/}
    </>)
 }
