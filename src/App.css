@@ -462,6 +462,16 @@ section:hover, input:hover, select:hover {
    font-size: 17pt;
    display:flex;
    flex-direction: column;
+   height:75%;
+   justify-content: center;
+   margin-top:5%;
+}
+
+.sub-info{
+   font-size:0.6rem;
+   height:25%;
+   justify-content: center;
+   align-content: center;
 }
 
 nav{
@@ -472,19 +482,6 @@ nav{
    height:100px;
 }
 
-/*.sub-info{
-   font-size:0.6rem;
-   position:absolute;
-   bottom:0;
-   display:flex;
-   transform: translate(-50%, -50%);
-   left:50%;
-   white-space: nowrap; 
-}*/
-
-.sub-info{
-   font-size:0.6rem;
-}
 
 .gap{
    margin-top:0.4rem;
