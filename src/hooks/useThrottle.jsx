@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useDebounce(fn, delay = 800) {
+export default function useThrottle(fn, delay = 800) {
    const [isReady, setIsReady] = useState(true)
 
    return (...args) => {

@@ -1,6 +1,6 @@
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend, Title } from 'chart.js';
-import { getFullCurrencyName } from '../currencies';
+import { fullCurrencyName } from '../currencies';
 import { motion, useAnimation } from "motion/react"
 import { useEffect } from 'react';
 
@@ -53,8 +53,8 @@ export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray,
    let stroke
    let radius
 
-   let fullCurrencyName1 = getFullCurrencyName(selectedCurrency1)
-   let fullCurrencyName2 = getFullCurrencyName(selectedCurrency2)
+   let fullCurrencyName1 = fullCurrencyName[selectedCurrency1]
+   let fullCurrencyName2 = fullCurrencyName[selectedCurrency2]
    let title1
    let title2
 

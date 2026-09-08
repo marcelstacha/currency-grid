@@ -18,7 +18,7 @@ import Footer from "./components/Footer"
 import useWindowWidth from './hooks/useWindowWidth';
 import useFunfact from './hooks/useFunfact';
 import useDarkMode from './hooks/useDarkMode.jsx'
-import useDebounce from './hooks/useDebounce.jsx'
+import useThrottle from './hooks/useThrottle.jsx'
 import useGetCurrencyData from "./hooks/useGetCurrencyData.jsx"
 
 import { currencies, currencySymbols } from "./currencies.js"
@@ -30,12 +30,17 @@ function App() {
       currency2: localStorage.getItem("currency-2") || currencies[1]
    })
 
+   useEffect(() => {
+      localStorage.setItem("currency-1", selectedCurrencies.currency1);
+      localStorage.setItem("currency-2", selectedCurrencies.currency2);
+   }, [selectedCurrencies]);
+
    const [textValue, setTextValue] = useState("1")
 
    const { funfact, getNextFunfact } = useFunfact();
    const [isDarkMode, setIsDarkMode] = useDarkMode()
    const windowWidth = useWindowWidth();
-   const debouncedSwitch = useDebounce(currencySwitch)
+   const throttledSwitch = useThrottle(currencySwitch)
 
    const {
       data,
@@ -57,9 +62,17 @@ function App() {
    }
 
    function handleTextField(e) {
-      const val = e.target.value
-      if (+val || val == "") {
-         setTextValue(val)
+      let val = e.target.value;
+      val = val.replace(',', '.');
+
+      if (val.length === 2 && val.startsWith("0") && val[1] !== ".") {
+         val = "0." + val[1];
+      }
+
+      const isValidFormat = /^\d*\.?\d*$/.test(val);
+
+      if (isValidFormat) {
+         setTextValue(val);
       }
    }
 
@@ -181,7 +194,7 @@ function App() {
                   currencies={currencies}
                   selectedCurrency1={selectedCurrencies.currency1}
                   selectedCurrency2={selectedCurrencies.currency2}
-                  onClick={(selectedCurrencies.currency1 != selectedCurrencies.currency2) ? debouncedSwitch : undefined}
+                  onClick={(selectedCurrencies.currency1 != selectedCurrencies.currency2) ? throttledSwitch : undefined}
                />
             </Card>
 
@@ -195,7 +208,7 @@ function App() {
                   currencies={currencies}
                   selectedCurrency1={selectedCurrencies.currency1}
                   selectedCurrency2={selectedCurrencies.currency2}
-                  onClick={(selectedCurrencies.currency1 != selectedCurrencies.currency2) ? debouncedSwitch : undefined}
+                  onClick={(selectedCurrencies.currency1 != selectedCurrencies.currency2) ? throttledSwitch : undefined}
                />
             </Card>
 

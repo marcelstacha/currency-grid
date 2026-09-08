@@ -11,8 +11,9 @@
 
 :root,body {
    margin: auto;
-	height: 100%;
-   background-color: var(--bg);
+	min-height: 100vh;
+   background: var(--bg);
+   background-attachment: fixed;
 }
 
 @font-face {
@@ -22,35 +23,35 @@
 
 [data-dark-mode=false] {
    transition: background-color 0.5s;
-   --bg: #f7f8fb;
-   --main: hsl(214, 0%, 88%);
-   --main2: hsl(214, 0%, 81%);
-   --input:hsl(225, 0%, 95%);
+   --bg: linear-gradient(0deg,rgb(173, 173, 173) 0%, rgb(212, 212, 212) 100%);
+
+   --main: hsl(0, 0%, 88%);
+   --main2: hsla(0, 0%, 86%, 0.899);
+   --input:hsl(0, 0%, 100%);
    --input2: hsl(0, 0%, 79%);
    --font: #262c27;
    --secondary: hsl(166, 100%, 26%);
-   --highlight:hsl(167, 30%, 25%);
-   --symbol:#00bd91;
+   --highlight:hsl(167, 30%, 22%);
+   --symbol:rgb(0, 189, 145);
    
    --filter:blur(24px) saturate(5) contrast(1.1);
    --blend:multiply;
-   --brightness:0.96;
 }
 [data-dark-mode=true] {
    transition: background-color 0.5s;
-   --bg: #0B0C10;
-   --main: hsl(206, 15%, 14%);
-   --main2: hsl(206, 15%, 13%);
+   --bg: linear-gradient(0deg,#000 0%, #131313 100%);
+
+   --main: hsl(210, 14%, 15%);
+   --main2: hsl(210, 13%, 9%);
    --input: hsl(206, 15%, 23%);
    --input2: hsl(210, 14%, 8%);
    --font: #D3D9D4;
    --secondary: #66FCF1;
    --highlight:hsl(180, 43%, 28%);
-   --symbol:#00ffee;
+   --symbol:rgb(0, 255, 238);
    
    --filter:blur(36px) saturate(5) contrast(1) brightness(0.8);
    --blend:normal;
-   --brightness:1.07;
 }
 
 @keyframes rotate {
@@ -87,6 +88,33 @@ footer{
    align-items: center;
    gap:0.75rem;
    padding:2rem 0;
+}
+
+.darkmode-btn {
+   background: transparent;
+   border: none;
+   cursor: pointer;
+   padding: 0;
+   display: inline-flex;
+}
+
+/* Versteckt das gefüllte Icon standardmäßig */
+.icon-hover {
+   display: none;
+}
+
+/* Tauscht die Icons beim Hovern aus */
+.darkmode-btn:hover .icon-default {
+   display: none;
+}
+.darkmode-btn:hover .icon-hover {
+   display: block;
+}
+
+/* Optional: Ein schöner Fokus-Ring für Tastaturnutzer */
+.darkmode-btn:focus-visible {
+   outline: 2px solid var(--secondary);
+   border-radius: 50%;
 }
 
 /*DotWave*/
@@ -145,7 +173,7 @@ footer{
 .star{
    z-index: 1;
    background-color: var(--symbol);
-   width:3.2rem;
+   width:5.2rem;
    height:3.2rem;
    position: absolute;
    top: 50%;
@@ -154,7 +182,7 @@ footer{
    cursor: pointer;
 }
 
-.container h3,.currency-select,.funfact,.title-header h1,.sub-info,.bill-container,.star,footer,h5 {
+.currency-select,#card-5,#card-1,.nav-bar,footer {
    -webkit-user-select: none;
    user-select: none;
 }
@@ -209,7 +237,8 @@ input,select {
 
 input:focus {
    outline: none;
-   box-shadow: inset 0 0 0 2px var(--secondary);
+   box-shadow: inset 0 0 0 1px var(--secondary);
+   outline:2px solid var(--secondary);
 }
 
 input:disabled{
@@ -266,7 +295,7 @@ input::placeholder {
 
 section {
    align-content: center;
-	background: linear-gradient(180deg,var(--main),var(--main2));
+	background-color: var(--main);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -276,9 +305,20 @@ section {
 	transition: all 0.2s;
 }
 
-section:hover, input:hover, select:hover {
-   filter: brightness(var(--brightness));
+section:hover {
+   background:var(--main2);
 	transition: 0.3s;
+}
+
+select:hover{
+   background:var(--secondary);
+   color:var(--highlight);
+   transition: 0.3s;
+}
+
+input:hover{
+   background:var(--main);
+   transition: 0.3s;
 }
 
 .diagram {
@@ -305,11 +345,10 @@ section:hover, input:hover, select:hover {
 }
 
 .funfact {
-   font-size: 0.75rem;
+   font-size: 0.7rem;
 	line-height: 1.5;
-   padding: 0 1.5rem;
+   padding: 0 1.2rem;
    opacity: 1;
-   transition: opacity 0.5s ease-in-out;
 }
 
 .loading{
@@ -341,6 +380,10 @@ section:hover, input:hover, select:hover {
    font-family: JetBrainsMono;
 	font-size: 0.9rem;
    width:100%;
+}
+
+.currency-select,input{
+   border:1px solid var(--main2);
 }
 
 .currency-select,.currency-select option {
@@ -533,7 +576,7 @@ nav{
       font-size:1.6rem;
    }
    .star{
-      width:2.4rem;
+      width:3.4rem;
       height:2.4rem;
    }
 
@@ -702,6 +745,14 @@ nav{
    .switch-icon{
       font-size: 0.65rem;
    }
+
+   .sub-info{
+      font-size:0.55rem;
+   }
+
+   h5{
+      font-size:0.5rem;
+   }
 }
 
 /******************************************************************************************************************/
@@ -715,7 +766,7 @@ nav{
    }
 
    .funfact{
-      font-size:0.6rem;
+      font-size:0.7rem;
    }
    .logos div{
       display:none;
@@ -723,6 +774,10 @@ nav{
    .currency-select,.currency-select option {
       padding-left: 0.75rem;
    }
+
+   .sub-info{
+   font-size:0.5rem;
+}
 
 }
 
@@ -831,7 +886,7 @@ nav{
    }
 
    h5{
-      font-size:0.6rem;
+      font-size:0.65rem;
    }
 
    footer{
@@ -844,12 +899,15 @@ nav{
    }
 
    .star{
-      width:3.2rem;
+      width:4.2rem;
       height:3.2rem;
    }
 
    .switch-icon{
       font-size: 0.9rem;
    }
+.sub-info{
+   font-size:0.75rem;
+}
 
 }

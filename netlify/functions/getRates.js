@@ -1,6 +1,4 @@
-
-export async function handler(event, context) {
-   // Extract ALL dynamic parameters sent from your React frontend
+export async function handler(event) {
    const {
       start_date,
       end_date,
@@ -11,7 +9,6 @@ export async function handler(event, context) {
    // eslint-disable-next-line no-undef
    const API_KEY = process.env.CURRENCY_API_KEY;
 
-   // Inject the exact variables we just extracted
    const url = `https://api.currencybeacon.com/v1/timeseries?api_key=${API_KEY}&base=${base}&start_date=${start_date}&end_date=${end_date}&symbols=${symbols}`;
 
    try {
@@ -29,7 +26,7 @@ export async function handler(event, context) {
    } catch (error) {
       return {
          statusCode: 500,
-         body: JSON.stringify({ error: 'Failed fetching data' }),
+         body: JSON.stringify({ error: error.message }),
       };
    }
 }

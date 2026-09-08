@@ -17,6 +17,19 @@ export default function useFunfact() {
       "Im Jahr 2019 wurden rund 5210 Tonnen Baumwollfasern für den Druck von Euro-Banknoten verwendet.",
       "Die European Currency Unit (ECU) diente ab 1979 als Vorläufer des Euro und wurde am 1. Januar 1999 im Verhältnis 1:1 als Euro fortgeführt.",
       "DEU, NLD, BEL, LUX, FRA, IRL, ESP, ITA, EST, LVA, LTU & GRC führten den Euro 2002 als gemeinsame Währung ein.",
+
+
+      "Amerikanische Banknoten bestehen nicht aus gewöhnlichem Papier, sondern zu 75 % aus Baumwolle und zu 25 % aus Leinen.",
+      "Der US-Dollar ist die unangefochtene Leitwährung der Welt und macht über 60 % aller weltweiten Währungsreserven aus.",
+      "Das Britische Pfund Sterling ist die älteste Währung der Welt, die noch immer kontinuierlich im Umlauf ist.",
+      "Der Name 'Pfund Sterling' stammt aus dem Mittelalter, als der Wert der Währung exakt einem Pfund an reinem Silber entsprach.",
+      "Die aktuellen Banknoten des Schweizer Frankens sind im Gegensatz zu fast allen anderen Währungen der Welt vertikal (hochkant) gestaltet.",
+      "Der Schweizer Franken ist der letzte offiziell im Umlauf befindliche Franken in Europa.",
+      "Das japanische Wort 'Yen' bedeutet übersetzt schlichtweg 'runder Gegenstand', was auf die Form der Münzen anspielt.",
+      "Die japanische 1-Yen-Münze besteht zu 100 % aus Aluminium und ist so leicht (1 Gramm), dass sie auf der Wasseroberfläche schwimmen kann.",
+      "China war während der Song-Dynastie im 11. Jahrhundert das erste Land der Welt, das Papiergeld als offizielles Zahlungsmittel einführte.",
+      "In China bezeichnet 'Renminbi' (Volkswährung) das offizielle Währungssystem, während 'Yuan' die konkrete Zähleinheit darstellt.",
+      "Weltweit gibt es heute rund 160 anerkannte offizielle Währungen, die in den 193 Mitgliedstaaten der Vereinten Nationen genutzt werden."
    ]
 
    const [funfact, setFunfact] = useState(funfactsArray[getRandomIndex()]);
