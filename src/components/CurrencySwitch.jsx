@@ -16,6 +16,10 @@ export default function CurrencySwitch({ selectedCurrency1, selectedCurrency2, o
                   <img className="bill blurred" title="bill-blurred-1" src={path1} />
                   <img className="bill blurred" title="bill-blurred-2" src={path2} />
                </div>
+               <div className="blurred-images-bg">
+                  <img className="bill blurred" title="bill-blurred-1" src={path1} />
+                  <img className="bill blurred" title="bill-blurred-2" src={path2} />
+               </div>
                <div className="foreground-images">
                   <img className="shadow bill" title="bill-1" src={path1} />
                   <img className="shadow bill" title="bill-2" src={path2} />
