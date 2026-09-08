@@ -56,11 +56,21 @@
 
 @keyframes rotate {
    0% {
-      transform: rotate(0)
+      scale:1;
+   }
+   50%{
+      scale:0.7;
+      transform: scaleX(2);
+      rotate:12deg;
    }
    to {
-      transform: rotate(360deg)
+      scale:1;
    }
+}
+
+.rotate{
+   animation: rotate 14s infinite;
+
 }
 
 body {
@@ -418,10 +428,11 @@ input:hover{
 }
 
 .blurred-images-bg{
-   transform: scale(2.3);
+   transform: scale(2.5);
    z-index:-1;
    overflow: visible;
-   opacity: 0.8;
+   opacity: 0.85;
+   top: -1.5rem;
 }
 
 .foreground-images {
@@ -439,7 +450,6 @@ input:hover{
 .bill {
 	height: 3.7rem;
 	object-fit: contain;
-	transition: all 0.5s;
 	border-radius: 4px;
    margin:-0.5rem;
 }
@@ -448,11 +458,11 @@ input:hover{
    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.2));
 }
 
-.bill:nth-child(1){
+.bill-1 {
    z-index: 99;
 }
 
-.bill:nth-child(2){
+.bill-2 {
    rotate: -9deg;
 }
 
@@ -791,6 +801,10 @@ nav{
 /******************************************************************************************************************/
 
 @media(max-width:576px){
+
+html, body {
+   overflow-x: hidden; 
+}
 
    :root {
       font-size: 1rem;
