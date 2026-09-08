@@ -25,10 +25,10 @@ import { currencies, currencySymbols } from "./currencies.js"
 
 function App() {
 
-   const [selectedCurrencies, setSelectedCurrencies] = useState({
+   const [selectedCurrencies, setSelectedCurrencies] = useState(() => ({
       currency1: localStorage.getItem("currency-1") || currencies[0],
       currency2: localStorage.getItem("currency-2") || currencies[1]
-   })
+   }))
 
    useEffect(() => {
       localStorage.setItem("currency-1", selectedCurrencies.currency1);

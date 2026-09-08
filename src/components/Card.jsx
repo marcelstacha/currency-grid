@@ -10,16 +10,41 @@ export default function Card({ children, height, background, style, id, onClick,
       />
    )
 
-   return (
-      <section
-         id={id}
-         onClick={onClick}
-         style={{
-            background: background,
-            height: `${height}px`,
-            ...style
-         }}>
-         {loading ? loader : children}
-      </section>
-   )
+   if (onClick) {
+      return (
+         <section
+            id={id}
+            onClick={onClick}
+            role="button"
+            tabIndex="0"
+            onKeyDown={(e) => {
+               if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onClick();
+               }
+            }}
+            style={{
+               background: background,
+               height: `${height}px`,
+               ...style
+            }}>
+            {loading ? loader : children}
+         </section>
+      )
+   } else {
+      return (
+         <section
+            id={id}
+            style={{
+               background: background,
+               height: `${height}px`,
+               ...style
+            }}>
+            {loading ? loader : children}
+         </section>
+      )
+   }
+
+
+
 }
