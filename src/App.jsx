@@ -127,6 +127,13 @@ function App() {
       startFunfactTimer()
    }
 
+   useEffect(() => {
+      currencies.forEach((currency) => {
+         const img = new Image();
+         img.src = `/${currency.toLowerCase()}.jpg`;
+      });
+   }, []);
+
    if (error) return (<div>Error: {error.message}</div>)
 
    return (
