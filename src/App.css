@@ -21,6 +21,7 @@ html, body {
    overflow-x: hidden;
    background: var(--bg);
    background-attachment: fixed;
+   -webkit-tap-highlight-color: transparent;
 }
 
 html{
@@ -50,30 +51,14 @@ body {
    transition: background-color .5s;
 }
 
-[data-dark-mode=false] {
-   --bg: linear-gradient(0deg, rgb(173, 173, 173) 0%, rgb(212, 212, 212) 100%);
-   --main: hsl(0, 0%, 88%);
-   --main2: hsla(0, 0%, 86%, 0.899);
-   --input: hsl(0, 0%, 100%);
-   --input2: hsl(0, 0%, 79%);
-   --font: #262c27;
-   --secondary: hsl(166, 100%, 26%);
-   --highlight: hsl(167, 30%, 22%);
-   --symbol: rgb(0, 189, 145);
-   --filter: blur(24px) saturate(5) contrast(1.1);
-   --filter-bg: blur(20px) saturate(4) contrast(1.5) brightness(1.5);
-   --blend: multiply;
-   --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
-   --border: 1px solid rgba(255, 255, 255, 0.7);
-}
-
 [data-dark-mode=true] {
    --bg: linear-gradient(0deg, #000 0%, #131313 100%);
-   --main: hsl(210, 14%, 15%);
+   --main: rgb(33, 38, 44);
    --main2: hsl(210, 13%, 9%);
    --input: hsl(206, 15%, 23%);
-   --input2: hsl(210, 14%, 8%);
+   --input2: hsl(180, 30%, 7%);
    --font: #D3D9D4;
+   --contour:hsl(0, 0%, 0%);
    --secondary: #66FCF1;
    --highlight: hsl(180, 43%, 28%);
    --symbol: rgb(0, 255, 238);
@@ -82,7 +67,34 @@ body {
    --blend: normal;
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
    --border: 1px solid rgba(0, 0, 0, 0.3);
+   --hover-section:rgba(33, 38, 44, 0.85);
+   --hover-button:hsl(180, 100%, 28%);
+   --hover-input:hsl(206, 15%, 19%);
+   --hover-input2:hsl(180, 30%, 5%);
 }
+
+[data-dark-mode=false] {
+   --bg: linear-gradient(0deg, rgb(173, 173, 173) 0%, rgb(212, 212, 212) 100%);
+   --main: hsl(0, 0%, 88%);
+   --main2: hsla(0, 0%, 86%, 0.899);
+   --input: hsl(0, 0%, 100%);
+   --input2: hsl(0, 0%, 79%);
+   --font: #262c27;
+   --contour:hsl(0, 0%, 100%);
+   --secondary: hsl(166, 100%, 26%);
+   --highlight: hsl(167, 30%, 22%);
+   --symbol: rgb(0, 189, 145);
+   --filter: blur(24px) saturate(5) contrast(1.1);
+   --filter-bg: blur(20px) saturate(4) contrast(1.5) brightness(1.5);
+   --blend: multiply;
+   --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
+   --border: 1px solid rgba(255, 255, 255, 0.7);
+   --hover-section:rgba(224, 224, 224,0.65);
+   --hover-button:hsl(167, 100%, 22%);
+   --hover-input:hsl(0, 0%, 94%);
+   --hover-input2:hsl(0, 0%, 77%);
+}
+
 
 @keyframes rotate {
    0% {
@@ -176,6 +188,7 @@ input, select {
    outline-offset: -1px;
    border: 0;
    border-radius: 999px;
+   transition: all 0.3s;
 }
 
 input:focus {
@@ -183,14 +196,26 @@ input:focus {
    box-shadow: inset 0 0 0 1px var(--secondary);
 }
 
-input:disabled, .currency-box input:disabled {
-   background-color: var(--input2);
+input:hover {
+   transition: .3s;
+}
+
+.upper-input{
+   background:var(--input);
+   color: var(--secondary);
+}
+
+.upper-input:hover{
+   background: var(--hover-input);
+}
+
+.lower-input{
+   background:var(--input2);
    color: var(--font);
 }
 
-input:hover {
-   transition: .3s;
-   background: var(--main);
+.lower-input:hover{
+   background: var(--hover-input2);
 }
 
 input::placeholder {
@@ -219,8 +244,7 @@ select {
 
 select:hover {
    transition: .3s;
-   background: var(--secondary);
-   color: var(--highlight);
+   background: var(--hover-button);
 }
 
 /* =========================================
@@ -381,7 +405,7 @@ section {
 
 section:hover {
    transition: .3s;
-   background: var(--main2);
+   background: var(--hover-section);
 }
 
 .card{
@@ -450,15 +474,16 @@ section:hover {
    width: 100%;
    height: 3.4rem;
    padding-left: 1.3rem;
-   background-color: var(--input);
-   color: var(--secondary);
    font-family: JetBrainsMono;
    font-size: 1.8rem;
    line-height: 2rem;
 }
 
-.currency-box input:first-child {
+.upper-input {
    z-index: 9;
+}
+.upper-input :hover {
+   color:var(--main);
 }
 
 .currency-box-label {
@@ -469,7 +494,7 @@ section:hover {
 }
 
 .currency-select, input {
-   border: 1px solid var(--main2);
+   border: 1px solid var(--contour);
 }
 
 .currency-select {

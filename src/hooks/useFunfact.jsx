@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const funfactsArray = [
    "DEU, NLD, BEL, LUX, FRA, IRL, ESP, ITA, EST, LVA, LTU & GRC führten den Euro 2002 als gemeinsame Währung ein.",
@@ -31,31 +31,26 @@ const funfactsArray = [
 
 export default function useFunfact() {
 
-   function shuffleArray(array) {
-      const newArr = [...array];
-      for (let i = newArr.length - 1; i > 0; i--) {
-         const j = Math.floor(Math.random() * (i + 1));
-         [newArr[i], newArr[j]] = [newArr[j], newArr[i]]; // Elemente tauschen
-      }
-      return newArr;
-   }
+   const [remainingFacts, setRemainingFacts] = useState(funfactsArray)
+   const [funfact, setFunfact] = useState()
 
-   const [shuffledFacts, setShuffledFacts] = useState(() => shuffleArray(funfactsArray));
-   const [currentIndex, setCurrentIndex] = useState(0);
-
-   const funfact = shuffledFacts[currentIndex];
+   useEffect(() => {
+      getNextFunfact()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [])
 
    function getNextFunfact() {
-      setCurrentIndex((prevIndex) => {
-         const nextIndex = prevIndex + 1;
 
-         if (nextIndex >= shuffledFacts.length) {
-            setShuffledFacts(shuffleArray(funfactsArray));
-            return 0;
-         }
+      let remaining = remainingFacts
 
-         return nextIndex;
-      });
+      if (remaining.length == 0) {
+         remaining = funfactsArray
+      }
+
+      const index = Math.floor(Math.random() * remaining.length)
+      setFunfact(remaining[index])
+      remaining = remaining.filter((prev, id) => id != index)
+      setRemainingFacts(remaining)
    }
 
    return { funfact, getNextFunfact };

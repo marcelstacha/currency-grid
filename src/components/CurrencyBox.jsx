@@ -9,7 +9,7 @@ export default function CurrencyBox({ textValue, handleTextField, currencySymbol
 
       <div className="currency-box">
 
-         <input value={textValue} placeholder="Wert" onChange={handleTextField} type="text" inputMode="decimal" aria-label="Betrag eingeben"></input>
+         <input value={textValue} placeholder="Wert" className="upper-input" onChange={handleTextField} type="text" inputMode="decimal" aria-label="Betrag eingeben"></input>
          <CurrencySelector
             no={1}
             currencySymbols={currencySymbols}
@@ -18,7 +18,7 @@ export default function CurrencyBox({ textValue, handleTextField, currencySymbol
             selectedCurrency2={selectedCurrency2}
             handleCurrencies={handleCurrencies}
          />
-         <input value={(!isNaN(textValue2) && textValue !== "") ? textValue2.toFixed(2) : "?"} onChange={handleTextField} aria-label="Ergebnis" disabled ></input>
+         <input value={(!isNaN(textValue2) && textValue !== "") ? textValue2.toFixed(2) : "?"} className="lower-input" onChange={handleTextField} aria-label="Ergebnis" disabled ></input>
          <CurrencySelector
             no={2}
             currencySymbols={currencySymbols}

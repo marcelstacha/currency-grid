@@ -207,7 +207,7 @@ function App() {
                />
             </Card>
 
-            <Card id="card-6" loading={isLoading}>
+            <Card id="card-6" loading={false}>
                <CurrencyBox
                   textValue={textValue}
                   latest={latest}
