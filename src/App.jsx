@@ -196,8 +196,12 @@ function App() {
                />
             </Card>
 
-            <Card id="card-5" loading={false}>
-               <CurrencySwitch
+
+            <Card id="card-6" loading={false}>
+               <CurrencyBox
+                  textValue={textValue}
+                  latest={latest}
+                  handleTextField={handleTextField}
                   handleCurrencies={handleCurrencies}
                   currencySymbols={currencySymbols}
                   currencies={currencies}
@@ -206,12 +210,8 @@ function App() {
                   onClick={(selectedCurrencies.currency1 != selectedCurrencies.currency2) ? throttledSwitch : undefined}
                />
             </Card>
-
-            <Card id="card-6" loading={false}>
-               <CurrencyBox
-                  textValue={textValue}
-                  latest={latest}
-                  handleTextField={handleTextField}
+            <Card id="card-5" loading={false}>
+               <CurrencySwitch
                   handleCurrencies={handleCurrencies}
                   currencySymbols={currencySymbols}
                   currencies={currencies}

@@ -13,6 +13,9 @@
    font-weight: 400;
    line-height: 1.75;
    text-align: center;
+
+   --star-radius-outer:12px;
+   --star-radius-inner:1.7rem;
 }
 
 html, body {
@@ -64,10 +67,13 @@ body {
    --symbol: rgb(0, 255, 238);
    --filter: blur(36px) saturate(5) contrast(1) brightness(0.9);
    --filter-bg: blur(36px) saturate(6) contrast(1) brightness(1);
+   --filter-bg2: blur(44px) saturate(11) contrast(1) brightness(0.7);
    --blend: normal;
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
-   --border: 1px solid rgba(0, 0, 0, 0.3);
+   --border: 1px solid rgba(0, 0, 0, 0.4);
    --hover-section:rgba(33, 38, 44, 0.85);
+   --hover-section2:rgba(33, 38, 44, 0.75);
+   --hover-section3:rgba(33, 38, 44, 0.65);
    --hover-button:hsl(180, 100%, 28%);
    --hover-input:hsl(206, 15%, 19%);
    --hover-input2:hsl(180, 30%, 5%);
@@ -85,11 +91,14 @@ body {
    --highlight: hsl(167, 30%, 22%);
    --symbol: rgb(0, 189, 145);
    --filter: blur(24px) saturate(5) contrast(1.1);
-   --filter-bg: blur(20px) saturate(4) contrast(1.5) brightness(1.5);
-   --blend: multiply;
+   --filter-bg: blur(36px) saturate(10) contrast(1) brightness(0.9);
+   --filter-bg2: blur(60px) saturate(7) contrast(1) brightness(1);
+   --blend: normal;
    --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
-   --border: 1px solid rgba(255, 255, 255, 0.7);
+   --border: 1px solid rgba(255, 255, 255, 0.65);
    --hover-section:rgba(224, 224, 224,0.65);
+   --hover-section2:rgba(224, 224, 224,0.5);
+   --hover-section3:rgba(224, 224, 224,0.3);
    --hover-button:hsl(167, 100%, 22%);
    --hover-input:hsl(0, 0%, 94%);
    --hover-input2:hsl(0, 0%, 77%);
@@ -132,7 +141,57 @@ body {
    }
 
    75% {
-      transform: translate(0px, -15px) scale(1.0.5) rotate(-9deg);
+      transform: translate(0px, -15px) scale(1.05) rotate(-9deg);
+   }
+
+   100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+   }
+}
+
+@keyframes rotate-3 {
+   0% {
+      transform: translate(0, 0) scale(1.2) rotate(0deg);
+   }
+
+   25% {
+      /* Leichter Push nach oben, kaum Rotation */
+      transform: translate(3px, -15px) scale(1.1) rotate(2deg);
+   }
+
+   50% {
+      /* Sinkt tiefer ab, zieht sich leicht zusammen */
+      transform: translate(-4px, 10px) scale(1.2) rotate(-3deg);
+   }
+
+   75% {
+      /* Schwebt nach links oben, öffnet sich wieder */
+      transform: translate(-10px, -5px) scale(1.1) rotate(4deg);
+   }
+
+   100% {
+      transform: translate(0, 0) scale(1.6) rotate(0deg);
+   }
+}
+
+@keyframes rotate-4 {
+   0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+   }
+
+   25% {
+      /* Starker Ausschlag nach links mit deutlicher Neigung */
+      transform: translate(-20px, 8px) scale(0.92) rotate(-7deg);
+   }
+
+   50% {
+      /* Höchster Punkt, fast gerade, etwas größer */
+      transform: translate(5px, -25px) scale(1.08) rotate(1deg);
+   }
+
+   75% {
+      /* Schwung nach rechts unten */
+      transform: translate(15px, 12px) scale(0.98) rotate(6deg);
    }
 
    100% {
@@ -141,12 +200,19 @@ body {
 }
 
 .blurred-images-bg .bill-1{
-   animation: rotate 22s infinite ease-in-out;
-   animation-delay: -5s;
+   animation: rotate 17s infinite linear;
 }
 
 .blurred-images-bg .bill-2{
-   animation: rotate-2 20s infinite ease-in-out;
+   animation: rotate-2 18s infinite linear;
+}
+
+.blurred-images-bg2 .bill-1{
+   animation: rotate-3 14s infinite linear;
+}
+
+.blurred-images-bg2 .bill-2{
+   animation: rotate-4 15s infinite linear;
 }
 
 /* =========================================
@@ -187,7 +253,6 @@ input, select {
    outline: 2px solid var(--bg);
    outline-offset: -1px;
    border: 0;
-   border-radius: 999px;
    transition: all 0.3s;
 }
 
@@ -203,6 +268,7 @@ input:hover {
 .upper-input{
    background:var(--input);
    color: var(--secondary);
+   border-radius: var(--star-radius-outer) 0 var(--star-radius-inner) 0;
 }
 
 .upper-input:hover{
@@ -212,10 +278,19 @@ input:hover {
 .lower-input{
    background:var(--input2);
    color: var(--font);
+   border-radius:0 var(--star-radius-inner) 0 var(--star-radius-outer) ;
 }
 
 .lower-input:hover{
    background: var(--hover-input2);
+}
+
+#currency-select-1{
+   border-radius:0 var(--star-radius-outer) 0 var(--star-radius-inner);
+}
+
+#currency-select-2{
+   border-radius:var(--star-radius-inner) 0 var(--star-radius-outer) 0;
 }
 
 input::placeholder {
@@ -269,15 +344,12 @@ select:hover {
 @keyframes pulse {
    0% {
       opacity: 1;
-      filter: blur(0px); 
    }
    50% {
-      opacity: 0.33;
-      filter: blur(16px); 
+      opacity: 0.25;
    }
    100% {
       opacity: 1;
-      filter: blur(0px); 
    }
 }
 
@@ -419,6 +491,11 @@ section:hover {
    grid-row: span 3;
    grid-column: span 4;
    height: auto!important;
+   background: var(--hover-section2);
+}
+
+#card-1:hover {
+   background: var(--hover-section3);
 }
 
 #card-2, #card-3, #card-4, #card-5, #card-6, #card-7, #card-8 {
@@ -433,6 +510,7 @@ section:hover {
 
 #card-6 {
    grid-column: span 2;
+   display: block;
 }
 
 #card-7 {
@@ -461,7 +539,9 @@ section:hover {
    display: grid;
    grid-template-columns: 2fr 1fr;
    transition: all .4s;
-   padding: 0 1rem;
+   padding: 1rem;
+   height: 100%;
+   box-sizing: border-box;
 }
 
 .currency-box select {
@@ -472,11 +552,15 @@ section:hover {
 .currency-box input {
    box-sizing: border-box;
    width: 100%;
-   height: 3.4rem;
+   height: 100%;
    padding-left: 1.3rem;
    font-family: JetBrainsMono;
-   font-size: 1.8rem;
+   font-size: 1.95rem;
    line-height: 2rem;
+}
+
+.currency-box select,.currency-box input {
+   z-index:3;
 }
 
 .upper-input {
@@ -501,12 +585,17 @@ section:hover {
    width: 100%;
    font-family: JetBrainsMono;
    font-size: .9rem;
+   text-align: center;
+   text-align-last: center;
 }
 
 .currency-select, .currency-select option {
-   padding-left: 1rem;
    background-color: var(--highlight);
    color: #eee;
+}
+
+.currency-select option {
+   text-align: left;
 }
 
 /* Trend & Values */
@@ -553,17 +642,31 @@ section:hover {
    padding-bottom: .5rem;
 }
 
+@keyframes fadeIn {
+0% {
+   opacity:0;
+}
+15% {
+   opacity:0;
+}
+
+100% {
+   opacity:1;
+}
+}
+
 /* Visual Components */
 .star {
    position: absolute;
-   z-index: 1;
+   z-index: 0;
    top: 50%;
    left: calc(2/3 * 100%);
    transform: translate(-50%, -50%);
-   width: 5.2rem;
-   height: 3.2rem;
+   width: 4.5rem;
+   height: 4.5rem;
    background-color: var(--symbol);
    cursor: pointer;
+   animation: fadeIn 3s ease-out 1;
 }
 
 .switch-icon {
@@ -588,13 +691,17 @@ section:hover {
    height: inherit;
    padding-bottom: .35rem;
    cursor: pointer;
+   width:100%;
 }
 
 .bill {
-   margin: -.5rem;
-   border-radius: 4px;
+   margin:-0.5rem;
+   border-radius: 3px;
    height: 3.7rem;
    object-fit: contain;
+   transform: translateZ(0);
+   will-change: transform, opacity;
+   image-rendering: high-quality;
 }
 
 .bill-1 {
@@ -605,11 +712,11 @@ section:hover {
    rotate: -9deg;
 }
 
-.shadow {
-   filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2));
+.shadow .bill {
+   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
-.blurred-images, .blurred-images-bg {
+.blurred-images, .blurred-images-bg, .blurred-images-bg2 {
    position: absolute;
    left: 0;
    display: flex;
@@ -625,17 +732,23 @@ section:hover {
    top: 0;
    overflow: hidden;
    border-radius: 16px;
+   will-change: transform, filter;
 }
 
-.blurred-images-bg {
+.blurred-images-bg,.blurred-images-bg2 {
    z-index: -1;
    opacity: 1;
-   transform: scale(3.1);
+   transform: scale(3.4);
    max-height:100px;
-   top: 0rem;
+   top: 1rem;
    max-height: 10px;
    max-width: 20px;
    left:0rem;
+}
+
+.blurred-images-bg2 {
+   left:-20rem !important;
+   top:-10rem;
 }
 
 
@@ -644,6 +757,7 @@ section:hover {
    z-index: 2;
    display: flex;
    flex-direction: column;
+   width: 100%;
 }
 
 .blurred {
@@ -653,6 +767,9 @@ section:hover {
 
 .blurred-bg{
    filter:var(--filter-bg);
+}
+.blurred-bg2{
+   filter:var(--filter-bg2);
 }
 
 /* =========================================
@@ -668,6 +785,14 @@ section:hover {
 
 @media (max-width: 1680px) {
 
+   :root {
+      --star-radius-inner:1.4rem;
+   }
+
+   .currency-box{
+      padding:0.7rem;
+   }
+
    nav {
       height: 80px;
    }
@@ -682,7 +807,7 @@ section:hover {
       height: 3.2rem;
    }
    .blurred{
-      filter: blur(24px) !important;
+      filter: blur(20px) saturate(5) !important;
    }
    .diagram {
       height: 23rem;
@@ -697,12 +822,7 @@ section:hover {
       margin-right: 1rem;
    }
    .currency-box input {
-      height: 2.6rem;
       font-size: 1.6rem;
-   }
-   .star {
-      width: 3.4rem;
-      height: 2.4rem;
    }
    .switch-icon {
       font-size: .8rem;
@@ -727,18 +847,35 @@ section:hover {
    .currency-box input {
       font-size: 1.5rem;
    }
-   .currency-select, .currency-select option {
-      padding-left: .75rem;
-      font-size: .75rem;
+   .currency-select  {
+      font-size: .8rem;
+   }
+   .currency-select option {
+      font-size: 1rem;
    }
 }
 
 @media (max-width: 1200px) {
+
+   :root {
+   --star-radius-inner:1.15rem;
+}
+
+.blurred-images-bg2 {
+   left:-15rem !important;
+   top:-5rem;
+}
+
+
    #card-2, #card-3, #card-4, #card-5, #card-6, #card-7, #card-8 {
       height: 160px!important;
    }
    .diagram {
       height: 18rem;
+   }
+
+   .currency-box{
+      padding:0.5rem;
    }
 
    .funfact {
@@ -752,8 +889,10 @@ section:hover {
       height: 1.2rem;
    }
    .currency-box input {
-      height: 2.2rem;
       font-size: 1.2rem;
+   }
+    .currency-box select {
+      font-size: 0.7rem;
    }
    .currency-select {
       font-size: .65rem;
@@ -771,6 +910,18 @@ section:hover {
 }
 
 @media (max-width: 992px) {
+   :root {
+      --star-radius-inner:1.05rem;
+   }
+
+   .blurred-images-bg2 {
+   left:20rem !important;
+   top:0rem;
+}
+
+   .currency-box input{
+      font-size:1.4rem;
+   }
    .bill {
       height: 2.7rem;
    }
@@ -805,11 +956,10 @@ section:hover {
    }
 
    .gap {
-    margin-top: 0;
-}
+      margin-top: 0;
+   }
    
    #card-2, #card-3, #card-4, #card-5, #card-6, #card-7, #card-8 {
-      order: 10;
       height: 150px!important;
    }
    #card-1 {
@@ -818,24 +968,27 @@ section:hover {
       height: 19rem!important;
    }
    #card-2 {
-      order: 3;
-   }
-   #card-4 {
       order: 4;
    }
-   #card-5 {
-      order: 1;
+   #card-4 {
+      order: 5;
    }
-   #card-6 {
+   #card-5 {
       order: 2;
    }
+   #card-6 {
+      order: 3;
+   }
    #card-7 {
+      order: 10;
       grid-column: span 2;
    }
    #card-8 {
-      order: 5;
+      order: 6;
    }
-
+   #card-3 {
+      order: 9;
+   }
    .graph-refresh {
       right: 4%;
    }
@@ -845,16 +998,24 @@ section:hover {
    .sub-info {
       font-size: .55rem;
    }
-    .blurred-images-bg{
+   .blurred-images-bg{
       top: 2rem;
       left: 0rem;
+   }
+
+   .star {
+      height:3rem;
    }
 
 }
 
 @media (max-width: 768px) {
    .currency-box input {
-      font-size: 1.05rem;
+      font-size: 1.22rem;
+   }
+
+   .currency-box select {
+      font-size: 0.65rem;
    }
    .funfact {
       font-size: clamp(0.6rem, 3.9cqw, 1rem);
@@ -874,31 +1035,45 @@ section:hover {
    }
    :root {
       font-size: 1rem;
+      --star-radius-inner:1.8rem;
+      --star-radius-outer:8px;
    }
+
+   .blurred-images-bg2 {
+      left:10rem !important;
+      top:-2rem;
+   }
+
    .funfact {
       font-size: clamp(0.65rem, 5cqw, 1rem);
       line-height: 1.3;
       padding: .9rem;
    }
-   
    nav {
       height: 60px;
    }
    .icon-container {
       margin-right: 0;
    }
+
+   .currency-box{
+      padding:0.65rem;
+   }
+
    .currency-box input {
-      height: 3.1rem;
-      font-size: 1.4rem;
+      font-size: 2.2rem;
    }
    .currency-select {
       font-size: .85rem;
+   }
+
+   .currency-box select{
+      font-size:0.95rem;
    }
    .container {
       grid-template-columns: repeat(2, 1fr);
       gap: 5px;
    }
-
    #card-1 {
       grid-column: span 2;
    }
@@ -953,26 +1128,47 @@ section:hover {
    .switch-icon {
       font-size: .9rem;
    }
-
    .top-card {
       display: flex;
       flex-direction: column;
       justify-content: center;
       flex: 1;
-      font-size: clamp(0.5rem, 7.5cqw, 1rem);
+      font-size: 0.95rem;
    }
-
    .sub-info {
       display: flex;
       align-content: center;
       justify-content: center;
       height: 28px;
       flex-shrink: 0;
-      font-size: clamp(0.5rem, 6cqw, 0.75rem);
+      font-size: 0.75rem;
+   }
+   .blurred-images-bg{
+      top: 10rem;
+      left: -8rem;
+      transform: scaleY(4) scaleX(3);
    }
 
-   .blurred-images-bg{
-      top: 5rem;
-      left: -4rem;
+   .currency-select option {
+      font-size: 1.6rem;
+   }
+}
+
+@media (max-width: 400px) {
+   .funfact {
+      font-size: 0.68rem;
+   }
+   .top-card {
+      font-size: 0.8rem;
+   }
+   .sub-info {
+      height: 28px;
+      font-size: 0.7rem;
+   }
+   .currency-box input{
+      font-size:1.65rem;
+   }
+   .currency-box option{
+      font-size:1.8rem;
    }
 }

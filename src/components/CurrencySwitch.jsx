@@ -1,23 +1,4 @@
-import { motion, AnimatePresence } from "motion/react";
-function Bill({ path, classes }) {
-   return (
-      <div style={{ display: "grid", placeItems: "center" }}>
-         <AnimatePresence>
-            <motion.img
-               key={path}
-               src={path}
-               className={`bill ${classes}`}
-               alt=""
-               style={{ gridArea: "1 / 1 / 2 / 2" }}
-               initial={{ opacity: 0, scale: 1 }}
-               animate={{ opacity: 1, scale: 1 }}
-               exit={{ opacity: 0, scale: 1, rotate: 0 }}
-               transition={{ duration: 0.4, ease: "easeInOut" }}
-            />
-         </AnimatePresence>
-      </div>
-   );
-}
+import Bill from "./Bill";
 
 export default function CurrencySwitch({ selectedCurrency1, selectedCurrency2, onClick, isIcon = false }) {
 
@@ -39,6 +20,10 @@ export default function CurrencySwitch({ selectedCurrency1, selectedCurrency2, o
             <div className="blurred-images-bg">
                <Bill path={path1} classes="bill-1 blurred-bg" />
                <Bill path={path2} classes="bill-2 blurred-bg" />
+            </div>
+            <div className="blurred-images-bg2">
+               <Bill path={path1} classes="bill-1 blurred-bg2" />
+               <Bill path={path2} classes="bill-2 blurred-bg2" />
             </div>
 
             <div className="foreground-images">
