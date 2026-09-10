@@ -156,21 +156,21 @@ body {
 
    25% {
       /* Leichter Push nach oben, kaum Rotation */
-      transform: translate(3px, -15px) scale(1.1) rotate(2deg);
+      transform: translate(3px, -15px) scale(1.1) rotate(24deg);
    }
 
    50% {
       /* Sinkt tiefer ab, zieht sich leicht zusammen */
-      transform: translate(-4px, 10px) scale(1.2) rotate(-3deg);
+      transform: translate(-4px, 10px) scale(1.2) rotate(-33deg);
    }
 
    75% {
       /* Schwebt nach links oben, öffnet sich wieder */
-      transform: translate(-10px, -5px) scale(1.1) rotate(4deg);
+      transform: translate(-10px, -5px) scale(1.1) rotate(41deg);
    }
 
    100% {
-      transform: translate(0, 0) scale(1.6) rotate(0deg);
+      transform: translate(0, 0) scale(1.2) rotate(0deg);
    }
 }
 
@@ -181,7 +181,7 @@ body {
 
    25% {
       /* Starker Ausschlag nach links mit deutlicher Neigung */
-      transform: translate(-20px, 8px) scale(0.92) rotate(-7deg);
+      transform: translate(-20px, 8px) scale(0.92) rotate(-17deg);
    }
 
    50% {
@@ -191,7 +191,7 @@ body {
 
    75% {
       /* Schwung nach rechts unten */
-      transform: translate(15px, 12px) scale(0.98) rotate(6deg);
+      transform: translate(15px, 12px) scale(0.98) rotate(23deg);
    }
 
    100% {
