@@ -27,7 +27,6 @@ export default function CurrencySwitch({ selectedCurrency1, selectedCurrency2, o
    return (
       isIcon ? (
          <button className="switch-icon darkmode-btn" aria-label="Währungen tauschen" onClick={onClick}>
-            {selectedCurrency1 == selectedCurrency2 ? "?" : ""}
          </button>
       ) : (
          <button className="bill-container darkmode-btn" onClick={onClick} aria-label="Währungen tauschen">

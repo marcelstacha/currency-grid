@@ -1,38 +1,10 @@
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend, Title } from 'chart.js';
 import { fullCurrencyName } from '../currencies';
-import { motion, useAnimation } from "motion/react"
-import { useEffect } from 'react';
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend, Title);
 
-export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray, dateArray, highest, lowest, isDarkMode, windowWidth, storageKey }) {
-
-   const controls = useAnimation()
-
-   useEffect(() => {
-      let isMounted = true;
-
-      if (!localStorage.getItem(storageKey)) {
-         try {
-            controls.start({ opacity: 0 })
-
-            const timer = setTimeout(() => {
-               if (isMounted) {
-                  controls.start({ opacity: 1 })
-               }
-            }, 200)
-
-            return () => {
-               isMounted = false;
-               clearTimeout(timer);
-            }
-         } catch (error) {
-            console.warn("Animation übersprungen: Element nicht bereit.", error);
-         }
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [selectedCurrency1])
+export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray, dateArray, highest, lowest, isDarkMode, windowWidth, isLoading }) {
 
    const bgColorD = "#0B0C10"
    const fontColorD = "#D3D9D4"
@@ -175,9 +147,7 @@ export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray,
                </h3>
 
             </>}
-         <motion.div
-            animate={controls}
-            className="diagram">
+         <div className={`diagram ${isLoading ? 'loading' : ''}`}>
             {selectedCurrency1 == selectedCurrency2
                ?
                <div className="same">
@@ -189,7 +159,7 @@ export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray,
                   options={options}
                />
             }
-         </motion.div>
+         </div>
       </>
    );
 }

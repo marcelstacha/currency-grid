@@ -14,6 +14,7 @@ export default function Card({ children, height, background, style, id, onClick,
       return (
          <section
             id={id}
+            className="card"
             onClick={onClick}
             role="button"
             tabIndex="0"
@@ -34,6 +35,7 @@ export default function Card({ children, height, background, style, id, onClick,
    } else {
       return (
          <section
+            className="card"
             id={id}
             style={{
                background: background,

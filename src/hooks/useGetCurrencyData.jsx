@@ -30,7 +30,7 @@ export default function useGetCurrencyData(selectedCurrency1, selectedCurrency2)
    const dmy = digitDay + day + "." + digitMonth + month + "." + year
    const storageKey = `currencyBeacon|${digitHour}${hour}:00|-|${dmy}|-|${selectedCurrency1}|`
 
-   const { data, setData, error, getApiData } = useApiCall(url, storageKey)
+   const { data, setData, error, getApiData, isFetching } = useApiCall(url, storageKey)
 
    useEffect(() => {
       if (shouldReload) {
@@ -135,6 +135,7 @@ export default function useGetCurrencyData(selectedCurrency1, selectedCurrency2)
       storageKey,
       endDate,
       first,
-      latest
+      latest,
+      isFetching
    };
 }

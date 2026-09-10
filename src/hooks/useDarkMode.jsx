@@ -14,10 +14,8 @@ export default function useDarkMode() {
          return (JSON.parse(darkmode))
       } else {
          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            console.log("dark-mode from OS - ON")
             return true
          } else {
-            console.log("dark-mode from OS - OFF")
             return false
          }
       }

@@ -8,7 +8,7 @@ export default function Funfact({ funfact }) {
    useEffect(() => {
       setTimeout(() => {
          setIsVisible(false);
-      }, "700");
+      }, "800");
    }, []);
 
    return (<>
@@ -17,7 +17,7 @@ export default function Funfact({ funfact }) {
          initial={isVisible ? { opacity: 1 } : { opacity: 0 }}
          animate={{ opacity: 1 }}
          exit={{ opacity: 0 }}
-         transition={{ duration: 0.33, ease: "easeInOut" }}
+         transition={{ duration: 0.5, ease: "easeInOut" }}
          className="line-height-small funfact"
       >
          {funfact}

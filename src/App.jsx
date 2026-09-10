@@ -52,10 +52,11 @@ function App() {
       storageKey,
       endDate,
       first,
-      latest
+      latest,
+      isFetching
    } = useGetCurrencyData(selectedCurrencies.currency1, selectedCurrencies.currency2);
 
-   const isLoading = !data
+   const isLoading = !data || isFetching
 
    function switchMode() {
       setIsDarkMode((prev) => !prev)
@@ -110,7 +111,7 @@ function App() {
          if (savedTimerRef.current) {
             savedTimerRef.current();
          }
-      }, 9000);
+      }, 8300);
    }
 
    useEffect(() => {
@@ -158,6 +159,7 @@ function App() {
                   isDarkMode={isDarkMode}
                   windowWidth={windowWidth}
                   storageKey={storageKey}
+                  isLoading={isLoading}
                />
             </Card>
 

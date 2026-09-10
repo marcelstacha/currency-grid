@@ -9,7 +9,7 @@ export default function CurrencySelector({ currencies, currencySymbols, no, sele
    }
 
    return (<>
-      <select className="currency-select" value={value} onChange={(e) => handleCurrencies(no, e.target.value)}>
+      <select className="currency-select" value={value} onChange={(e) => handleCurrencies(no, e.target.value)} aria-label="Währung auswählen">
          {currencies.map((currency, index) => (
             <option key={currency} value={currency} >
                {currency}{"\u2003"}({currencySymbols[index]})
