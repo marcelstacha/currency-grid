@@ -820,6 +820,10 @@ section:hover {
    .sub-info {
       font-size: .55rem;
    }
+    .blurred-images-bg{
+      top: 2rem;
+      left: 0rem;
+   }
 
 }
 
@@ -836,6 +840,7 @@ section:hover {
    .logos div {
       display: none;
    }
+
 }
 
 @media (max-width: 576px) {
@@ -939,5 +944,10 @@ section:hover {
       height: 28px;
       flex-shrink: 0;
       font-size: clamp(0.5rem, 6cqw, 0.75rem);
+   }
+
+   .blurred-images-bg{
+      top: 5rem;
+      left: -4rem;
    }
 }
