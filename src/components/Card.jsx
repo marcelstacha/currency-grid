@@ -1,13 +1,16 @@
-import { DotWave } from 'ldrs/react'
-import 'ldrs/react/DotWave.css'
+import { Quantum } from 'ldrs/react'
+import 'ldrs/react/Quantum.css'
 
 export default function Card({ children, height, background, style, id, onClick, loading = true }) {
 
    const loader = (
-      <DotWave
-         size="47"
-         speed="1"
-      />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+         <Quantum
+            size="45"
+            speed="2"
+            color="var(--font)"
+         />
+      </div>
    )
 
    if (onClick) {

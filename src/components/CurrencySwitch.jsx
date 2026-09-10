@@ -37,10 +37,8 @@ export default function CurrencySwitch({ selectedCurrency1, selectedCurrency2, o
             </div>
 
             <div className="blurred-images-bg">
-               <div className="rotate">
-                  <Bill path={path1} classes="bill-1 blurred" />
-                  <Bill path={path2} classes="bill-2 blurred" />
-               </div>
+               <Bill path={path1} classes="bill-1 blurred-bg" />
+               <Bill path={path2} classes="bill-2 blurred-bg" />
             </div>
 
             <div className="foreground-images">

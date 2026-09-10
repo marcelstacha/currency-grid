@@ -13,7 +13,6 @@
    font-weight: 400;
    line-height: 1.75;
    text-align: center;
-   margin: auto;
 }
 
 html, body {
@@ -22,6 +21,10 @@ html, body {
    overflow-x: hidden;
    background: var(--bg);
    background-attachment: fixed;
+}
+
+html{
+   margin:0;
 }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {
@@ -37,14 +40,10 @@ body {
    margin:0;
 }
 
-.container {
+.container,.nav-bar {
    max-width: 1680px;
    margin: 0 auto;
-}
-
-.nav-bar{
-   margin: 0 auto;
-   max-width: 1680px;
+   padding: 0 0.5rem;
 }
 
 [data-dark-mode] {
@@ -62,6 +61,7 @@ body {
    --highlight: hsl(167, 30%, 22%);
    --symbol: rgb(0, 189, 145);
    --filter: blur(24px) saturate(5) contrast(1.1);
+   --filter-bg: blur(20px) saturate(4) contrast(1.5) brightness(1.5);
    --blend: multiply;
    --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
    --border: 1px solid rgba(255, 255, 255, 0.7);
@@ -77,25 +77,64 @@ body {
    --secondary: #66FCF1;
    --highlight: hsl(180, 43%, 28%);
    --symbol: rgb(0, 255, 238);
-   --filter: blur(36px) saturate(5) contrast(1) brightness(0.8);
+   --filter: blur(36px) saturate(5) contrast(1) brightness(0.9);
+   --filter-bg: blur(36px) saturate(6) contrast(1) brightness(1);
    --blend: normal;
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
    --border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 @keyframes rotate {
-   0%, 100% {
-      scale: 1;
+   0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
    }
+
+   25% {
+      transform: translate(20px, -30px) scale(1.12) rotate(12deg);
+   }
+
    50% {
-      transform: scaleX(2);
-      rotate: 12deg;
-      scale: 0.7;
+      transform: translate(-10px, -20px) scale(0.92) rotate(3deg);
+   }
+
+   75% {
+      transform: translate(15px, 10px) scale(1) rotate(-9deg);
+   }
+
+   100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
    }
 }
 
-.rotate {
-   animation: rotate 14s infinite;
+@keyframes rotate-2 {
+   0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+   }
+
+   25% {
+      transform: translate(-5px, -30px) scale(1.1) rotate(-4deg);
+   }
+
+   50% {
+      transform: translate(-15px, 0) scale(0.8) rotate(3deg);
+   }
+
+   75% {
+      transform: translate(0px, -15px) scale(1.0.5) rotate(-9deg);
+   }
+
+   100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+   }
+}
+
+.blurred-images-bg .bill-1{
+   animation: rotate 22s infinite ease-in-out;
+   animation-delay: -5s;
+}
+
+.blurred-images-bg .bill-2{
+   animation: rotate-2 20s infinite ease-in-out;
 }
 
 /* =========================================
@@ -545,7 +584,6 @@ section:hover {
    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2));
 }
 
-/* Blurred Background Images */
 .blurred-images, .blurred-images-bg {
    position: absolute;
    left: 0;
@@ -566,10 +604,15 @@ section:hover {
 
 .blurred-images-bg {
    z-index: -1;
-   top: -1.5rem;
    opacity: 1;
-   transform: scale(3);
+   transform: scale(3.1);
+   max-height:100px;
+   top: 0rem;
+   max-height: 10px;
+   max-width: 20px;
+   left:0rem;
 }
+
 
 .foreground-images {
    position: relative;
@@ -581,6 +624,10 @@ section:hover {
 .blurred {
    opacity: 1;
    filter: var(--filter);
+}
+
+.blurred-bg{
+   filter:var(--filter-bg);
 }
 
 /* =========================================
@@ -595,9 +642,7 @@ section:hover {
 */
 
 @media (max-width: 1680px) {
-   :root {
-      padding: 0 12px;
-   }
+
    nav {
       height: 80px;
    }
@@ -611,6 +656,9 @@ section:hover {
    .bill {
       height: 3.2rem;
    }
+   .blurred{
+      filter: blur(24px) !important;
+   }
    .diagram {
       height: 23rem;
    }
@@ -620,7 +668,6 @@ section:hover {
    .graph-refresh svg {
       height: 1.3rem;
    }
-
    .icon-container {
       margin-right: 1rem;
    }
@@ -796,12 +843,12 @@ section:hover {
       overflow-x: hidden;
    }
    :root {
-      padding: 0 8px;
       font-size: 1rem;
    }
    .funfact {
-      font-size: clamp(0.7rem, 5cqw, 1rem);
-      line-height: 1.6 !important;
+      font-size: clamp(0.65rem, 5cqw, 1rem);
+      line-height: 1.3;
+      padding: .9rem;
    }
    
    nav {
@@ -857,14 +904,7 @@ section:hover {
       border-radius: 2px;
       height: 3.5rem;
    }
-   .blurred-images {
-      border-radius: 10px;
-   }
 
-   .funfact {
-      padding: .9rem;
-      line-height: 1.3;
-   }
    section {
       border-radius: 10px;
    }
@@ -889,15 +929,15 @@ section:hover {
       flex-direction: column;
       justify-content: center;
       flex: 1;
-      font-size: clamp(0.6rem, 8cqw, 1rem);
+      font-size: clamp(0.5rem, 7.5cqw, 1rem);
    }
 
-.sub-info {
-   display: flex;
-   align-content: center;
-   justify-content: center;
-   height: 28px;
-   flex-shrink: 0;
-   font-size: clamp(0.5rem, 6cqw, 0.75rem);
-}
+   .sub-info {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      height: 28px;
+      flex-shrink: 0;
+      font-size: clamp(0.5rem, 6cqw, 0.75rem);
+   }
 }

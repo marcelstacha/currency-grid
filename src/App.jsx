@@ -196,7 +196,7 @@ function App() {
                />
             </Card>
 
-            <Card id="card-5" loading={isLoading}>
+            <Card id="card-5" loading={false}>
                <CurrencySwitch
                   handleCurrencies={handleCurrencies}
                   currencySymbols={currencySymbols}
