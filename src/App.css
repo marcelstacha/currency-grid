@@ -71,7 +71,7 @@ body {
    --filter: blur(36px) saturate(3) contrast(1) brightness(0.65);
    --filter-mobile: blur(18px) saturate(4.5) brightness(0.65);
    --filter-bg: blur(36px) saturate(6) contrast(1) brightness(1);
-   --filter-bg-mobile: blur(32px) saturate(5) contrast(1) brightness(0.95);
+   --filter-bg-mobile: blur(64px) saturate(5) contrast(1) brightness(0.95);
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
    --border: 1px solid rgba(0, 0, 0, 0.4);
    --hover-section: rgba(33, 38, 44, 0.85);
@@ -98,7 +98,7 @@ body {
    --filter: blur(12px) saturate(3) contrast(0.8);
    --filter-mobile: blur(16px) saturate(4) contrast(0.8);
    --filter-bg: blur(48px) saturate(7) contrast(1) brightness(0.8);
-   --filter-bg-mobile: blur(32px) saturate(7) contrast(1.2) brightness(0.8);
+   --filter-bg-mobile: blur(64px) saturate(7) contrast(1.2) brightness(0.8);
    --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
    --border: 1px solid rgba(255, 255, 255, 0.65);
    --hover-section: rgba(224, 224, 224, 0.65);
