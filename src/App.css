@@ -1210,12 +1210,12 @@ input {
 
    .blurred-images-bg .bill-1 {
       left: -3.5rem !important;
-      top: -1.5rem !important;
+      top: -0.5rem !important;
    }
 
    .blurred-images-bg .bill-2 {
       left: -3.5rem !important;
-      top: 4rem !important;
+      top: 5rem !important;
    }
 
 }
