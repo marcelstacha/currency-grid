@@ -44,8 +44,6 @@ body {
    background: var(--bg);
    width: auto;
    margin: 0;
-   isolation: isolate;
-   transform: translateZ(0);
 }
 
 .container,
@@ -451,9 +449,6 @@ section:hover {
 #card-6,
 #card-8 {
    position: relative;
-   /* Statt unset: Hält den Ankerpunkt für die GPU intakt */
-   isolation: isolate;
-   /* Trennt den Render-Kontext sauber ab */
 }
 
 #card-6 {
