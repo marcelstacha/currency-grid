@@ -25,7 +25,7 @@
         "npm:eslint-plugin-react@^7.37.0",
         "npm:eslint@^9.11.1",
         "npm:globals@^15.9.0",
-        "npm:ldrs@^1.1.6",
+        "npm:ldrs@^1.1.9",
         "npm:luxon@^3.6.1",
         "npm:motion@^12.6.0",
         "npm:react-chartjs-2@^5.2.0",

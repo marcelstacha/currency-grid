@@ -1,6 +1,6 @@
 import './App.css'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Card from "./components/Card"
 import Title from './components/Title'
@@ -16,7 +16,6 @@ import Average from './components/Average.jsx'
 import Footer from "./components/Footer"
 
 import useWindowWidth from './hooks/useWindowWidth';
-import useFunfact from './hooks/useFunfact';
 import useDarkMode from './hooks/useDarkMode.jsx'
 import useThrottle from './hooks/useThrottle.jsx'
 import useGetCurrencyData from "./hooks/useGetCurrencyData.jsx"
@@ -37,7 +36,6 @@ function App() {
 
    const [textValue, setTextValue] = useState("1")
 
-   const { funfact, getNextFunfact } = useFunfact();
    const [isDarkMode, setIsDarkMode] = useDarkMode()
    const windowWidth = useWindowWidth();
    const throttledSwitch = useThrottle(currencySwitch)
@@ -94,39 +92,6 @@ function App() {
       ))
    }
 
-   const savedTimerRef = useRef(null);
-
-   useEffect(() => {
-      savedTimerRef.current = getNextFunfact;
-   }, [getNextFunfact]);
-
-   const timerRef = useRef(null);
-
-   function startFunfactTimer() {
-      if (timerRef.current) {
-         clearInterval(timerRef.current);
-      }
-
-      timerRef.current = setInterval(() => {
-         if (savedTimerRef.current) {
-            savedTimerRef.current();
-         }
-      }, 8300);
-   }
-
-   useEffect(() => {
-      startFunfactTimer();
-      return () => {
-         if (timerRef.current) {
-            clearInterval(timerRef.current);
-         }
-      };
-   }, []);
-
-   function getCustomNextFunfact() {
-      getNextFunfact()
-      startFunfactTimer()
-   }
 
    useEffect(() => {
       currencies.forEach((currency) => {
@@ -190,10 +155,8 @@ function App() {
                />
             </Card>
 
-            <Card id="card-7" onClick={getCustomNextFunfact} loading={false}>
-               <Funfact
-                  funfact={funfact}
-               />
+            <Card id="card-7" loading={false}>
+               <Funfact />
             </Card>
 
 

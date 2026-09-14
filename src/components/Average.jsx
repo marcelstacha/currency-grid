@@ -1,11 +1,16 @@
+import { useMemo } from "react"
 import { OFFSET } from "../utils"
 
 export default function Average({ dataArray, selectedCurrency1, selectedCurrency2 }) {
 
-   const sum = (dataArray.reduce((acc, curr) => acc + curr, 0))
-
-   const avg1 = (sum / OFFSET).toFixed(4)
-   const avg2 = (1 / (sum / OFFSET)).toFixed(4)
+   const { avg1, avg2 } = useMemo(() => {
+      const sum = (dataArray.reduce((acc, curr) => acc + curr, 0))
+      const average = sum / OFFSET
+      return {
+         avg1: (average).toFixed(4),
+         avg2: (1 / (average)).toFixed(4)
+      }
+   }, [dataArray])
 
    return (<>
       <div className="top-card">
