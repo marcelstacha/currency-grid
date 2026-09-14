@@ -446,11 +446,6 @@ section:hover {
    cursor: pointer;
 }
 
-#card-6,
-#card-8 {
-   position: relative;
-}
-
 #card-6 {
    grid-column: span 2;
    position: unset;
@@ -660,7 +655,7 @@ input {
 }
 
 .bill-1 {
-   z-index: 99;
+   z-index: 12;
 }
 
 .bill-2 {
