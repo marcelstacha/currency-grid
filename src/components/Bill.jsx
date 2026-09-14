@@ -5,7 +5,7 @@ export default function Bill({ path, classes }) {
    const isBlurred = classes.includes("blurred-bg")
 
    return (<>
-      <div style={{ display: "grid", placeItems: "center", position: "relative" }} className={`bill ${classes}`}>
+      <div style={{ display: "grid", position: "relative" }} className={`bill ${classes}`}>
          <AnimatePresence mode={isBlurred ? "popLayout" : "sync"}>
             <motion.img
                key={path}

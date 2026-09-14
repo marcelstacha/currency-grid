@@ -14,24 +14,26 @@
    line-height: 1.75;
    text-align: center;
 
-   --star-radius-outer:12px;
-   --star-radius-inner:1.7rem;
+   --star-radius-outer: 12px;
+   --star-radius-inner: 1.7rem;
 }
 
-html, body {
+html,
+body {
    min-height: 100vh;
-   scrollbar-width: none; 
+   scrollbar-width: none;
    overflow-x: hidden;
    background: var(--bg);
    background-attachment: fixed;
    -webkit-tap-highlight-color: transparent;
 }
 
-html{
-   margin:0;
+html {
+   margin: 0;
 }
 
-html::-webkit-scrollbar, body::-webkit-scrollbar {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
    display: none;
 }
 
@@ -41,10 +43,11 @@ body {
    color: var(--font);
    background: var(--bg);
    width: auto;
-   margin:0;
+   margin: 0;
 }
 
-.container,.nav-bar {
+.container,
+.nav-bar {
    max-width: 1680px;
    margin: 0 auto;
    padding: 0 0.5rem;
@@ -61,24 +64,24 @@ body {
    --input: hsl(206, 15%, 23%);
    --input2: hsl(180, 30%, 7%);
    --font: #D3D9D4;
-   --contour:hsl(0, 0%, 0%);
+   --contour: hsl(0, 0%, 0%);
    --secondary: #66FCF1;
    --highlight: hsl(180, 43%, 28%);
    --symbol: rgb(0, 255, 238);
    --filter: blur(36px) saturate(3) contrast(1) brightness(0.65);
-   --filter-mobile:blur(18px) saturate(4.5) brightness(0.65);
-   --filter-bg: blur(36px) saturate(6) contrast(1) brightness(1); 
-   --filter-bg-mobile: blur(18px) saturate(5) contrast(1) brightness(0.95);
+   --filter-mobile: blur(18px) saturate(4.5) brightness(0.65);
+   --filter-bg: blur(36px) saturate(6) contrast(1) brightness(1);
+   --filter-bg-mobile: blur(8px) saturate(5) contrast(1) brightness(0.95);
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
    --border: 1px solid rgba(0, 0, 0, 0.4);
-   --hover-section:rgba(33, 38, 44, 0.85);
-   --hover-section2:rgba(33, 38, 44, 0.75);
-   --hover-section3:rgba(33, 38, 44, 0.65);
-   --hover-button:hsl(180, 100%, 28%);
-   --hover-input:hsl(206, 15%, 19%);
-   --hover-input2:hsl(180, 30%, 5%);
+   --hover-section: rgba(33, 38, 44, 0.85);
+   --hover-section2: rgba(33, 38, 44, 0.75);
+   --hover-section3: rgba(33, 38, 44, 0.65);
+   --hover-button: hsl(180, 100%, 28%);
+   --hover-input: hsl(206, 15%, 19%);
+   --hover-input2: hsl(180, 30%, 5%);
 
-   --footer-bg:rgba(0,0,0,0.2)
+   --footer-bg: rgba(0, 0, 0, 0.2)
 }
 
 [data-dark-mode=false] {
@@ -88,24 +91,24 @@ body {
    --input: hsl(0, 0%, 100%);
    --input2: hsl(0, 0%, 79%);
    --font: #262c27;
-   --contour:hsl(0, 0%, 100%);
+   --contour: hsl(0, 0%, 100%);
    --secondary: hsl(166, 100%, 26%);
    --highlight: hsl(167, 30%, 22%);
    --symbol: rgb(0, 189, 145);
    --filter: blur(12px) saturate(3) contrast(0.8);
-   --filter-mobile:blur(16px) saturate(4) contrast(0.8);
+   --filter-mobile: blur(16px) saturate(4) contrast(0.8);
    --filter-bg: blur(48px) saturate(7) contrast(1) brightness(0.8);
-   --filter-bg-mobile: blur(18px) saturate(5) contrast(1) brightness(0.8);
+   --filter-bg-mobile: blur(8px) saturate(7) contrast(1.2) brightness(0.8);
    --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
    --border: 1px solid rgba(255, 255, 255, 0.65);
-   --hover-section:rgba(224, 224, 224,0.65);
-   --hover-section2:rgba(224, 224, 224,0.5);
-   --hover-section3:rgba(224, 224, 224,0.3);
-   --hover-button:hsl(167, 100%, 22%);
-   --hover-input:hsl(0, 0%, 94%);
-   --hover-input2:hsl(0, 0%, 77%);
+   --hover-section: rgba(224, 224, 224, 0.65);
+   --hover-section2: rgba(224, 224, 224, 0.5);
+   --hover-section3: rgba(224, 224, 224, 0.3);
+   --hover-button: hsl(167, 100%, 22%);
+   --hover-input: hsl(0, 0%, 94%);
+   --hover-input2: hsl(0, 0%, 77%);
 
-   --footer-bg:rgba(255,255,255,0.2)
+   --footer-bg: rgba(255, 255, 255, 0.2)
 }
 
 
@@ -113,7 +116,12 @@ body {
    2. GLOBAL HTML ELEMENTS
 ========================================= */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
    margin: 0;
    padding: 0;
 }
@@ -141,13 +149,14 @@ footer {
    margin: 3rem auto 0rem auto;
    padding: 0.5rem 1rem 0 1rem;
    font-size: .75rem;
-   border-radius:16px;
-   color:white;
+   border-radius: 16px;
+   color: white;
 }
 
 
 /* Base Inputs & Selects */
-input, select {
+input,
+select {
    z-index: 2;
    outline: 2px solid var(--bg);
    outline-offset: -1px;
@@ -164,32 +173,32 @@ input:hover {
    transition: .3s;
 }
 
-.upper-input{
-   background:var(--input);
+.upper-input {
+   background: var(--input);
    color: var(--secondary);
    border-radius: var(--star-radius-outer) 0 var(--star-radius-inner) 0;
 }
 
-.upper-input:hover{
+.upper-input:hover {
    background: var(--hover-input);
 }
 
-.lower-input{
-   background:var(--input2);
+.lower-input {
+   background: var(--input2);
    color: var(--font);
-   border-radius:0 var(--star-radius-inner) 0 var(--star-radius-outer) ;
+   border-radius: 0 var(--star-radius-inner) 0 var(--star-radius-outer);
 }
 
-.lower-input:hover{
+.lower-input:hover {
    background: var(--hover-input2);
 }
 
-#currency-select-1{
-   border-radius:0 var(--star-radius-outer) 0 var(--star-radius-inner);
+#currency-select-1 {
+   border-radius: 0 var(--star-radius-outer) 0 var(--star-radius-inner);
 }
 
-#currency-select-2{
-   border-radius:var(--star-radius-inner) 0 var(--star-radius-outer) 0;
+#currency-select-2 {
+   border-radius: var(--star-radius-inner) 0 var(--star-radius-outer) 0;
 }
 
 input::placeholder {
@@ -201,7 +210,7 @@ input[type=number] {
    appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
    margin: 0;
    -webkit-appearance: none;
@@ -224,7 +233,8 @@ select:hover {
 /* =========================================
    3. TYPOGRAPHY & UTILITY CLASSES
 ========================================= */
-.bold, .full-currency-name {
+.bold,
+.full-currency-name {
    font-weight: 700;
 }
 
@@ -244,16 +254,18 @@ select:hover {
    0% {
       opacity: 1;
    }
+
    50% {
       opacity: 0.25;
    }
+
    100% {
       opacity: 1;
    }
 }
 
 .loading {
-   filter: grayscale(0.5); 
+   filter: grayscale(0.5);
    pointer-events: none;
    animation: pulse 2s infinite ease-in-out;
 }
@@ -263,20 +275,24 @@ select:hover {
 }
 
 /* Colors & Highlights */
-.result, #card-3 .result, .title-header h1, #full-currency-name-blue {
+.result,
+#card-3 .result,
+.title-header h1,
+#full-currency-name-blue {
    color: var(--secondary);
 }
 
-.dark-light-toggle, .title-header {
+.dark-light-toggle,
+.title-header {
    fill: var(--secondary);
 }
 
-.beacon{
+.beacon {
    fill: white;
 }
 
 .dot_125fd4 {
-   background-color: var(--symbol)!important;
+   background-color: var(--symbol) !important;
 }
 
 /* Flexbox Helpers */
@@ -315,7 +331,11 @@ select:hover {
 }
 
 /* User Selection Rules */
-#card-1, #card-5, .currency-select, .nav-bar, footer {
+#card-1,
+#card-5,
+.currency-select,
+.nav-bar,
+footer {
    -webkit-user-select: none;
    user-select: none;
 }
@@ -369,7 +389,7 @@ section {
    display: grid;
    align-content: center;
    transition: all .2s;
-   box-shadow: 0 1px 15px rgba(0,0,0,.08);
+   box-shadow: 0 1px 15px rgba(0, 0, 0, .08);
    border-radius: 16px;
    background-color: var(--main);
    background-position: center;
@@ -384,7 +404,7 @@ section:hover {
 }
 
 
-.card{
+.card {
    box-shadow: var(--shadow);
    border: var(--border);
    box-sizing: border-box;
@@ -394,7 +414,7 @@ section:hover {
 #card-1 {
    grid-row: span 3;
    grid-column: span 4;
-   height: auto!important;
+   height: auto !important;
    background: var(--hover-section2);
 }
 
@@ -402,11 +422,20 @@ section:hover {
    background: var(--hover-section3);
 }
 
-#card-2, #card-3, #card-4, #card-5, #card-6, #card-7, #card-8 {
+#card-2,
+#card-3,
+#card-4,
+#card-5,
+#card-6,
+#card-7,
+#card-8 {
    height: 250px;
 }
 
-#card-2, #card-3, #card-4, #card-8 {
+#card-2,
+#card-3,
+#card-4,
+#card-8 {
    display: flex;
    flex-direction: column;
    justify-content: space-around;
@@ -416,19 +445,20 @@ section:hover {
    cursor: pointer;
 }
 
-#card-6,#card-8{
+#card-6,
+#card-8 {
    position: unset;
 }
 
 #card-6 {
    grid-column: span 2;
-   position:unset;
+   position: unset;
    align-content: stretch;
 }
 
 #card-6 .currency-box {
    position: relative;
-   height:100%;
+   height: 100%;
 }
 
 .top-card {
@@ -473,15 +503,17 @@ section:hover {
    line-height: 2rem;
 }
 
-.currency-box select,.currency-box input {
-   z-index:3;
+.currency-box select,
+.currency-box input {
+   z-index: 3;
 }
 
 .upper-input {
    z-index: 9;
 }
+
 .upper-input :hover {
-   color:var(--main);
+   color: var(--main);
 }
 
 .currency-box-label {
@@ -491,7 +523,8 @@ section:hover {
    text-align: left;
 }
 
-.currency-select, input {
+.currency-select,
+input {
    border: 1px solid var(--contour);
 }
 
@@ -503,7 +536,8 @@ section:hover {
    text-align-last: center;
 }
 
-.currency-select, .currency-select option {
+.currency-select,
+.currency-select option {
    background-color: var(--highlight);
    color: #eee;
 }
@@ -543,13 +577,14 @@ section:hover {
    padding: 0 1.2rem;
    font-size: clamp(0.6rem, 6.2cqw, 1rem);
    line-height: 1.4;
-   -webkit-hyphens: auto; /* Für Safari */
+   -webkit-hyphens: auto;
+   /* Für Safari */
    hyphens: auto;
 }
 
 .diagram {
    display: flex;
-   transition: all 0s!important;
+   transition: all 0s !important;
    margin: auto;
    width: 96%;
    height: 28.5rem;
@@ -557,16 +592,17 @@ section:hover {
 }
 
 @keyframes fadeIn {
-0% {
-   opacity:0;
-}
-15% {
-   opacity:0;
-}
+   0% {
+      opacity: 0;
+   }
 
-100% {
-   opacity:1;
-}
+   15% {
+      opacity: 0;
+   }
+
+   100% {
+      opacity: 1;
+   }
 }
 
 /* Visual Components */
@@ -606,16 +642,17 @@ section:hover {
    height: inherit;
    padding-bottom: .35rem;
    cursor: pointer;
-   width:100%;
+   width: 100%;
 }
 
 .bill {
-   margin:-0.5rem;
+   margin: -0.5rem;
    border-radius: 3px;
    height: 3.7rem;
    object-fit: contain;
    transform: translateZ(0);
    will-change: transform, opacity;
+   place-items: center;
 }
 
 .foreground-images .bill {
@@ -634,7 +671,8 @@ section:hover {
    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
-.blurred-images, .blurred-images-bg {
+.blurred-images,
+.blurred-images-bg {
    position: absolute;
    left: 0;
    display: flex;
@@ -652,27 +690,28 @@ section:hover {
    will-change: transform, filter;
 }
 
-.blurred-images-bg{
+.blurred-images-bg {
    z-index: -1;
    opacity: 1;
    transform: scale(3.4);
-   max-height:100px;
+   max-height: 100px;
    top: -2rem;
    max-height: 10px;
    max-width: 20px;
 }
 
-.blurred-bg{
-   transform: scale(2,1.2);
+.blurred-bg {
+   transform: scale(2, 1.2);
 }
 
-.blurred-bg.bill-1{
-   top:1.25rem;
-   left:-12rem;
+.blurred-bg.bill-1 {
+   top: 1.25rem;
+   left: -12rem;
 }
-.blurred-bg.bill-2{
-   top:-0.5rem;
-   left:-3rem;
+
+.blurred-bg.bill-2 {
+   top: -0.5rem;
+   left: -3rem;
    rotate: 0deg;
 }
 
@@ -689,8 +728,8 @@ section:hover {
    filter: var(--filter);
 }
 
-.blurred-bg{
-   filter:var(--filter-bg);
+.blurred-bg {
+   filter: var(--filter-bg);
 }
 
 /* =========================================
@@ -707,47 +746,64 @@ section:hover {
 @media (max-width: 1680px) {
 
    :root {
-      --star-radius-inner:1.4rem;
+      --star-radius-inner: 1.4rem;
    }
 
-   .currency-box{
-      padding:0.7rem;
+   .currency-box {
+      padding: 0.7rem;
    }
 
    nav {
       height: 80px;
    }
+
    .funfact {
       padding: 1rem;
       font-size: clamp(0.62rem, 5.6cqw, 1rem);
    }
-   #card-2, #card-3, #card-4, #card-5, #card-6, #card-7, #card-8 {
-      height: 200px!important;
+
+   #card-2,
+   #card-3,
+   #card-4,
+   #card-5,
+   #card-6,
+   #card-7,
+   #card-8 {
+      height: 200px !important;
    }
+
    .bill {
       height: 3.2rem;
    }
-   .blurred{
+
+   .blurred {
       filter: var(--filter-mobile);
    }
+
    .diagram {
       height: 23rem;
    }
+
    .graph-refresh {
       top: .7rem;
    }
+
    .graph-refresh svg {
       height: 1.3rem;
    }
+
    .icon-container {
       margin-right: 1rem;
    }
+
    .currency-box input {
       font-size: 1.6rem;
    }
+
    .switch-icon {
       font-size: .8rem;
    }
+
    .currency-box-label {
       padding: .15rem 2.4rem;
    }
@@ -759,18 +815,22 @@ section:hover {
 
 @media (max-width: 1400px) {
 
-   .foreground-images > div > img{
+   .foreground-images>div>img {
       height: 2.8rem;
    }
+
    footer {
       font-size: .6rem;
    }
+
    .currency-box input {
       font-size: 1.5rem;
    }
-   .currency-select  {
+
+   .currency-select {
       font-size: .8rem;
    }
+
    .currency-select option {
       font-size: 1rem;
    }
@@ -779,84 +839,107 @@ section:hover {
 @media (max-width: 1200px) {
 
    :root {
-      --star-radius-inner:1.15rem;
+      --star-radius-inner: 1.15rem;
    }
 
-   #card-2, #card-3, #card-4, #card-5, #card-6, #card-7, #card-8 {
-      height: 160px!important;
+   #card-2,
+   #card-3,
+   #card-4,
+   #card-5,
+   #card-6,
+   #card-7,
+   #card-8 {
+      height: 160px !important;
    }
+
    .diagram {
       height: 18rem;
    }
 
-   .currency-box{
-      padding:0.5rem;
+   .currency-box {
+      padding: 0.5rem;
    }
 
    .funfact {
       padding: .71rem;
       font-size: clamp(0.5rem, 6cqw, 1rem);
    }
-   .foreground-images > div > img{
+
+   .foreground-images>div>img {
       height: 2.5rem;
    }
+
    .graph-refresh {
       height: 1.2rem;
    }
+
    .currency-box input {
       font-size: 1.2rem;
    }
-    .currency-box select {
+
+   .currency-box select {
       font-size: 0.7rem;
    }
+
    .currency-select {
       font-size: .65rem;
    }
+
    .switch-icon {
       font-size: .7rem;
    }
+
    .currency-box-label {
       display: none;
    }
+
    .sub-info {
       height: 30px;
-      font-size:0.5rem;
+      font-size: 0.5rem;
    }
 }
 
 @media (max-width: 992px) {
    :root {
-      --star-radius-inner:1.05rem;
+      --star-radius-inner: 1.05rem;
    }
 
-   .currency-box input{
-      font-size:1.4rem;
+   .currency-box input {
+      font-size: 1.4rem;
    }
-  .foreground-images > div > img{
+
+   .foreground-images>div>img {
       height: 2.5rem;
    }
+
    .nav-bar {
       height: 3rem;
    }
+
    .title-header h1 {
       font-size: 1.35rem;
    }
+
    .dark-light-toggle {
       width: 32px;
       height: 32px;
    }
+
    .funfact {
       padding: 1.1rem;
       line-height: 1.4;
       font-size: clamp(0.62rem, 3.1cqw, 1rem);
    }
+
    .container {
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
    }
+
    .diagram {
       height: 16rem;
    }
+
    h3 {
       padding-top: .5rem;
    }
@@ -868,54 +951,71 @@ section:hover {
    .gap {
       margin-top: 0;
    }
-   
-   #card-2, #card-3, #card-4, #card-5, #card-6, #card-7, #card-8 {
-      height: 150px!important;
+
+   #card-2,
+   #card-3,
+   #card-4,
+   #card-5,
+   #card-6,
+   #card-7,
+   #card-8 {
+      height: 150px !important;
    }
+
    #card-1 {
       grid-column: span 3;
       order: 1;
-      height: 19rem!important;
+      height: 19rem !important;
    }
+
    #card-2 {
       order: 4;
    }
+
    #card-4 {
       order: 5;
    }
+
    #card-5 {
       order: 3;
    }
+
    #card-6 {
       order: 2;
    }
+
    #card-7 {
       order: 10;
       grid-column: span 2;
    }
+
    #card-8 {
       order: 6;
    }
+
    #card-3 {
       order: 9;
    }
+
    .graph-refresh {
       right: 4%;
    }
+
    .switch-icon {
       font-size: .65rem;
    }
+
    .sub-info {
       font-size: .55rem;
    }
 
    .star {
-      height:3rem;
+      height: 3rem;
    }
 
-   .blurred-bg{
-      transform: scale(1.6,1.3);
-      top:1.2rem !important;
+   .blurred-bg {
+      transform: scale(1.6, 1.3);
+      top: 1.2rem !important;
    }
 
 }
@@ -928,12 +1028,15 @@ section:hover {
    .currency-box select {
       font-size: 0.65rem;
    }
+
    .funfact {
       font-size: clamp(0.6rem, 3.9cqw, 1rem);
    }
-   .foreground-images > div > img{
+
+   .foreground-images>div>img {
       height: 2.4rem;
    }
+
    .logos div {
       display: none;
    }
@@ -941,13 +1044,16 @@ section:hover {
 }
 
 @media (max-width: 576px) {
-   body, html {
+
+   body,
+   html {
       overflow-x: hidden;
    }
+
    :root {
       font-size: 1rem;
-      --star-radius-inner:1.8rem;
-      --star-radius-outer:8px;
+      --star-radius-inner: 1.8rem;
+      --star-radius-outer: 8px;
    }
 
    .funfact {
@@ -955,50 +1061,61 @@ section:hover {
       line-height: 1.3;
       padding: .9rem;
    }
+
    nav {
       height: 60px;
    }
+
    .icon-container {
       margin-right: 0;
    }
 
-   .currency-box{
-      padding:0.65rem;
+   .currency-box {
+      padding: 0.65rem;
    }
 
    .currency-box input {
       font-size: 2.2rem;
    }
+
    .currency-select {
       font-size: .85rem;
    }
 
-   .currency-box select{
-      font-size:0.95rem;
+   .currency-box select {
+      font-size: 0.95rem;
    }
+
    .container {
       grid-template-columns: repeat(2, 1fr);
       gap: 5px;
    }
+
    #card-1 {
       grid-column: span 2;
    }
+
    #card-2 {
       order: 2;
    }
+
    #card-4 {
       order: 5;
    }
+
    #card-5 {
       order: 3;
    }
+
    #card-6 {
       order: 1;
    }
-   #card-7{
+
+   #card-7 {
       grid-column: span 1;
       grid-row: span 1;
    }
+
    #card-8 {
       order: 4;
    }
@@ -1006,12 +1123,14 @@ section:hover {
    .title-header h1 {
       font-size: 1.2rem;
    }
+
    .dark-light-toggle {
       width: 22px;
       height: 22px;
       padding: 1rem;
    }
-   .foreground-images > div > img{
+
+   .foreground-images>div>img {
       height: 4rem;
       border-radius: 4px;
    }
@@ -1023,17 +1142,21 @@ section:hover {
    footer {
       flex-direction: column;
    }
+
    .graph-refresh {
       top: .8rem;
       right: 4.5%;
    }
+
    .star {
       width: 4.2rem;
       height: 3.2rem;
    }
+
    .switch-icon {
       font-size: .9rem;
    }
+
    .top-card {
       display: flex;
       flex-direction: column;
@@ -1041,6 +1164,7 @@ section:hover {
       flex: 1;
       font-size: 0.95rem;
    }
+
    .sub-info {
       display: flex;
       align-content: center;
@@ -1054,29 +1178,39 @@ section:hover {
       font-size: 1.6rem;
    }
 
-   .blurred-bg{ 
-      filter:var(--filter-bg-mobile);
-      transform: scale(1.5,2);
-      top:1rem !important;
-      left:-4rem !important;
+   .blurred-bg {
+      filter: var(--filter-bg-mobile);
+      transform: scale(1.5, 2);
+      top: 1rem !important;
+      left: -4rem !important;
    }
 
-   .blurred-images-bg{
-      z-index: -1;
+   .blurred-images-bg {
+      z-index: -2 !important;
       opacity: 1;
-      transform: scale(3.4,3);
-      max-height:100px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+   }
+
+   /* Wir drehen jeden Schein direkt einzeln und hängen ihn oben links auf */
+   .blurred-images-bg .bill-1,
+   .blurred-images-bg .bill-2 {
+      position: absolute !important;
+      transform-origin: center right !important;
+      transform: scale(6, 1.7);
       max-height: 10px;
       max-width: 20px;
-      rotate:-90deg;
    }
-   .blurred-images-bg .bill-1{
-      left:-3.5rem !important;
-      top:4rem !important;
+
+   .blurred-images-bg .bill-1 {
+      left: -3.5rem !important;
+      top: -1.5rem !important;
    }
-   .blurred-images-bg .bill-2{
-      left:-3.5rem !important;
-      top:-3.4rem !important;
+
+   .blurred-images-bg .bill-2 {
+      left: -3.5rem !important;
+      top: 4rem !important;
    }
 
 }
@@ -1085,21 +1219,25 @@ section:hover {
    .funfact {
       font-size: 0.68rem;
    }
+
    .top-card {
       font-size: 0.8rem;
    }
+
    .sub-info {
       height: 28px;
       font-size: 0.7rem;
    }
-   .currency-box input{
-      font-size:2rem;
-   }
-   .currency-box option{
-      font-size:1.8rem;
+
+   .currency-box input {
+      font-size: 2rem;
    }
 
-   .foreground-images > div > img{
+   .currency-box option {
+      font-size: 1.8rem;
+   }
+
+   .foreground-images>div>img {
       height: 3.5rem;
    }
 }
