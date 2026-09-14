@@ -303,7 +303,7 @@ select:hover {
    display: flex;
    align-items: center;
    justify-content: center;
-   gap: 8px;
+   gap: 4px;
 }
 
 .logos img {
@@ -450,7 +450,10 @@ section:hover {
 
 #card-6,
 #card-8 {
-   position: unset;
+   position: relative;
+   /* Statt unset: Hält den Ankerpunkt für die GPU intakt */
+   isolation: isolate;
+   /* Trennt den Render-Kontext sauber ab */
 }
 
 #card-6 {
