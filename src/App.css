@@ -67,8 +67,8 @@ body {
    --symbol: rgb(0, 255, 238);
    --filter: blur(36px) saturate(3) contrast(1) brightness(0.65);
    --filter-mobile:blur(18px) saturate(4.5) brightness(0.65);
-   --filter-bg: blur(40px) saturate(7) contrast(1) brightness(1); 
-   --filter-bg-mobile: blur(12px) saturate(7) contrast(1) brightness(0.8);
+   --filter-bg: blur(40px) saturate(5) contrast(1) brightness(1); 
+   --filter-bg-mobile: blur(12px) saturate(5) contrast(1) brightness(0.8);
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
    --border: 1px solid rgba(0, 0, 0, 0.4);
    --hover-section:rgba(33, 38, 44, 0.85);
@@ -1012,7 +1012,7 @@ section:hover {
       padding: 1rem;
    }
    .foreground-images > div > img{
-      height: 3rem;
+      height: 4rem;
       border-radius: 4px;
    }
 
@@ -1073,9 +1073,13 @@ section:hover {
       font-size: 0.7rem;
    }
    .currency-box input{
-      font-size:1.65rem;
+      font-size:2rem;
    }
    .currency-box option{
       font-size:1.8rem;
+   }
+
+   .foreground-images > div > img{
+      height: 3.5rem;
    }
 }
