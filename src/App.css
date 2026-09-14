@@ -1184,7 +1184,7 @@ input {
    }
 
    .blurred-bg {
-      filter: var(--filter-bg-mobile);
+      backdrop-filter: var(--filter-bg-mobile);
       transform: scale(1.5, 2);
       top: 1rem !important;
       left: -4rem !important;
