@@ -111,6 +111,13 @@ function App() {
                switchMode={switchMode}
             />
          </nav>
+         <div
+            className="bg-gradient-bg"
+            style={{
+               "--c1": `var(--${selectedCurrencies.currency1.toLowerCase()})`,
+               "--c2": `var(--${selectedCurrencies.currency2.toLowerCase()})`
+            }}
+         />
          <div className="container">
 
             <Card id="card-1" loading={false}>

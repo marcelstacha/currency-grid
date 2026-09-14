@@ -16,6 +16,34 @@
 
    --star-radius-outer: 12px;
    --star-radius-inner: 1.7rem;
+
+
+   --chf: #9d7cb8;
+   --cny: #be656b;
+   --czk: #be7ca0;
+   --dkk: #be6568;
+   --eur: #be659e;
+   --gbp: #be7565;
+   --jpy: #be9765;
+   --huf: #be9965;
+   --nok: #927cbe;
+   --pln: #beab65;
+   --ron: #9c7cbe;
+   --sek: #be7d65;
+   --usd: #7cbe9f;
+}
+
+.bg-gradient-bg {
+   position: fixed;
+   inset: 0;
+   width: 100vw;
+   height: 100dvh;
+   z-index: 0;
+   pointer-events: none;
+   background:
+      radial-gradient(circle 22rem at 40% 60%, var(--c1) 33%, transparent 100%),
+      radial-gradient(circle 20rem at 60% 60%, var(--c2) 33%, transparent 100%);
+   filter: var(--filter-bg);
 }
 
 html,
@@ -70,9 +98,8 @@ body {
    --highlight: hsl(180, 43%, 28%);
    --symbol: rgb(0, 255, 238);
    --filter: blur(36px) saturate(3) contrast(1) brightness(0.65);
+   --filter-bg: saturate(1.1) contrast(1) brightness(0.8);
    --filter-mobile: blur(18px) saturate(4.5) brightness(0.65);
-   --filter-bg: blur(36px) saturate(6) contrast(1) brightness(1);
-   --filter-bg-mobile: blur(48px) saturate(5) contrast(1) brightness(0.95);
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
    --border: 1px solid rgba(0, 0, 0, 0.4);
    --hover-section: rgba(33, 38, 44, 0.85);
@@ -81,7 +108,6 @@ body {
    --hover-button: hsl(180, 100%, 28%);
    --hover-input: hsl(206, 15%, 19%);
    --hover-input2: hsl(180, 30%, 5%);
-
    --footer-bg: rgba(0, 0, 0, 0.2)
 }
 
@@ -97,9 +123,8 @@ body {
    --highlight: hsl(167, 30%, 22%);
    --symbol: rgb(0, 189, 145);
    --filter: blur(12px) saturate(3) contrast(0.8);
+   --filter-bg: saturate(1) contrast(0.9) brightness(1);
    --filter-mobile: blur(16px) saturate(4) contrast(0.8);
-   --filter-bg: blur(48px) saturate(7) contrast(1) brightness(0.8);
-   --filter-bg-mobile: blur(48px) saturate(7) contrast(1.2) brightness(0.8);
    --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
    --border: 1px solid rgba(255, 255, 255, 0.65);
    --hover-section: rgba(224, 224, 224, 0.65);
@@ -108,7 +133,6 @@ body {
    --hover-button: hsl(167, 100%, 22%);
    --hover-input: hsl(0, 0%, 94%);
    --hover-input2: hsl(0, 0%, 77%);
-
    --footer-bg: rgba(255, 255, 255, 0.2)
 }
 
@@ -140,7 +164,6 @@ nav {
 }
 
 footer {
-   /*background: linear-gradient(180deg, var(--footer-bg) 0%, transparent 70%, transparent 100%);*/
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -188,6 +211,7 @@ input:hover {
    background: var(--input2);
    color: var(--font);
    border-radius: 0 var(--star-radius-inner) 0 var(--star-radius-outer);
+   z-index: 10;
 }
 
 .lower-input:hover {
@@ -666,8 +690,7 @@ input {
    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
-.blurred-images,
-.blurred-images-bg {
+.blurred-images {
    position: absolute;
    left: 0;
    display: flex;
@@ -683,16 +706,6 @@ input {
    overflow: hidden;
    border-radius: 16px;
    will-change: transform, filter;
-}
-
-.blurred-images-bg {
-   z-index: -1;
-   opacity: 1;
-   transform: scale(3.4);
-   max-height: 100px;
-   top: -2rem;
-   max-height: 10px;
-   max-width: 20px;
 }
 
 .blurred-bg {
@@ -739,6 +752,13 @@ input {
 */
 
 @media (max-width: 1680px) {
+
+   .bg-gradient-bg {
+
+      background:
+         radial-gradient(ellipse 31rem 20rem at 40% 60%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 28rem 18rem at 60% 60%, var(--c2) 33%, transparent 100%);
+   }
 
    :root {
       --star-radius-inner: 1.4rem;
@@ -814,6 +834,10 @@ input {
       height: 2.8rem;
    }
 
+   .blurred-images>div>img {
+      height: 2.6rem;
+   }
+
    footer {
       font-size: .6rem;
    }
@@ -864,6 +888,10 @@ input {
       height: 2.5rem;
    }
 
+   .blurred-images>div>img {
+      height: 2.3rem;
+   }
+
    .graph-refresh {
       height: 1.2rem;
    }
@@ -905,6 +933,10 @@ input {
 
    .foreground-images>div>img {
       height: 2.5rem;
+   }
+
+   .blurred-images>div>img {
+      height: 2.3rem;
    }
 
    .nav-bar {
@@ -1032,6 +1064,10 @@ input {
       height: 2.4rem;
    }
 
+   .blurred-images>div>img {
+      height: 2.2rem;
+   }
+
    .logos div {
       display: none;
    }
@@ -1127,7 +1163,10 @@ input {
 
    .foreground-images>div>img {
       height: 4rem;
-      border-radius: 4px;
+   }
+
+   .blurred-images>div>img {
+      height: 3.8rem;
    }
 
    section {
@@ -1173,41 +1212,6 @@ input {
       font-size: 1.6rem;
    }
 
-   .blurred-bg {
-      backdrop-filter: var(--filter-bg-mobile);
-      transform: scale(1.5, 2);
-      top: 1rem !important;
-      left: -4rem !important;
-   }
-
-   .blurred-images-bg {
-      z-index: 0 !important;
-      opacity: 1;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-   }
-
-   /* Wir drehen jeden Schein direkt einzeln und hängen ihn oben links auf */
-   .blurred-images-bg .bill-1,
-   .blurred-images-bg .bill-2 {
-      position: absolute !important;
-      transform-origin: center right !important;
-      transform: scale(7, 1.7);
-      max-height: 10px;
-      max-width: 20px;
-   }
-
-   .blurred-images-bg .bill-1 {
-      left: -3.5rem !important;
-      top: -0.5rem !important;
-   }
-
-   .blurred-images-bg .bill-2 {
-      left: -3.5rem !important;
-      top: 5rem !important;
-   }
-
 }
 
 @media (max-width: 400px) {
@@ -1234,5 +1238,9 @@ input {
 
    .foreground-images>div>img {
       height: 3.5rem;
+   }
+
+   .blurred-images>div>img {
+      height: 3.3rem;
    }
 }
