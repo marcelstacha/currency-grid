@@ -107,12 +107,10 @@ body {
    overflow-x: hidden;
    background: var(--bg);
    -webkit-tap-highlight-color: transparent;
-   overscroll-behavior-y: none;
 }
 
 html {
    margin: 0;
-   background: var(--hover-input);
 }
 
 html::-webkit-scrollbar,
