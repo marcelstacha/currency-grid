@@ -209,7 +209,7 @@ input:hover {
 
 .lower-input {
  /*  background: var(--input2);*/
- background:black;
+ background:pink;
    color: var(--font);
    border-radius: 0 var(--star-radius-inner) 0 var(--star-radius-outer);
    z-index: 10 !important;
