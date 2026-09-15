@@ -95,8 +95,8 @@
    z-index: 0;
    pointer-events: none;
    background:
-      radial-gradient(ellipse 28rem 42vh at 39.5% 60%, var(--c1) 33%, transparent 100%),
-      radial-gradient(ellipse 28rem 42vh at 60.5% 60%, var(--c2) 33%, transparent 100%);
+      radial-gradient(ellipse 24rem 37vh at 39.5% 46%, var(--c1) 33%, transparent 100%),
+      radial-gradient(ellipse 24rem 37vh at 60.5% 46%, var(--c2) 33%, transparent 100%);
    filter: var(--filter-bg);
 }
 
