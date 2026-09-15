@@ -1,7 +1,6 @@
 import CurrencySelector from "./CurrencySelector"
-import CurrencySwitch from "./CurrencySwitch"
 
-export default function CurrencyBox({ textValue, handleTextField, currencySymbols, currencies, selectedCurrency1, selectedCurrency2, handleCurrencies, onClick, latest }) {
+export default function CurrencyBox({ textValue, handleTextField, handleCurrencies, currencySymbols, currencies, selectedCurrency1, selectedCurrency2, latest }) {
 
    let textValue2 = parseFloat(textValue.replace(',', '.')) * latest
 
@@ -27,17 +26,7 @@ export default function CurrencyBox({ textValue, handleTextField, currencySymbol
             selectedCurrency2={selectedCurrency2}
             handleCurrencies={handleCurrencies}
          />
-         <div className="star"
-            onClick={onClick}
-         >
-            <CurrencySwitch
-               selectedCurrency1={selectedCurrency1}
-               selectedCurrency2={selectedCurrency2}
-               isIcon={true}
-            />
-         </div>
-
+         <div className="star" />
       </div>
-
    </>)
 }

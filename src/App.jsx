@@ -166,7 +166,6 @@ function App() {
                <Funfact />
             </Card>
 
-
             <Card id="card-6" loading={false}>
                <CurrencyBox
                   textValue={textValue}
@@ -177,7 +176,6 @@ function App() {
                   currencies={currencies}
                   selectedCurrency1={selectedCurrencies.currency1}
                   selectedCurrency2={selectedCurrencies.currency2}
-                  onClick={(selectedCurrencies.currency1 != selectedCurrencies.currency2) ? throttledSwitch : undefined}
                />
             </Card>
             <Card id="card-5" loading={false}>
