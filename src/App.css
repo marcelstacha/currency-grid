@@ -1201,8 +1201,8 @@ section:hover {
    
    .bg-gradient-bg {
       background:
-         radial-gradient(ellipse 42vw 52vh at 30% 550px, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 42vw 52vh at 70% 550px, var(--c2) 33%, transparent 100%);
+         radial-gradient(ellipse 42vw 50vh at 30% 630px, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 42vw 50vh at 70% 630px, var(--c2) 33%, transparent 100%);
    }
 
 }
