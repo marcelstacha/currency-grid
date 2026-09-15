@@ -101,14 +101,17 @@
    filter: var(--filter-bg);
 }
 
-html,
-body {
+:root, body {
+   margin: auto;
+   min-height: 100vh;
+}
+
+html, body {
    min-height: 100vh;
    scrollbar-width: none;
    overflow-x: hidden;
-   background: var(--bg);
    -webkit-tap-highlight-color: transparent;
-   /* background-attachment: fixed; */
+   background-color: transparent;
 }
 
 html {
