@@ -1,34 +1,34 @@
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend, Title } from 'chart.js';
 import { fullCurrencyName } from '../currencies';
+import { useEffect, useState } from 'react';
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend, Title);
 
 export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray, dateArray, highest, lowest, isDarkMode, windowWidth, isLoading }) {
 
-   const bgColorD = "#0B0C10"
-   const fontColorD = "#D3D9D4"
-   const secondaryColorD = "#00ffee"
+   const [bgColor, setBgColor] = useState('');
+   const [secondaryColor, setSecondaryColor] = useState('');
 
-   const bgColor = "#f0f1f5"
-   const fontColor = "#262c27"
-   const secondaryColor = "#007a5e"
+   useEffect(() => {
+      requestAnimationFrame(() => {
+         const themeElement = document.querySelector('[data-dark-mode]');
+         if (!themeElement) return;
+
+         const styles = getComputedStyle(themeElement);
+
+         setBgColor(styles.getPropertyValue('--main').trim());
+         setSecondaryColor(styles.getPropertyValue('--secondary').trim());
+      });
+   }, [isDarkMode]);
 
    let rangeVal = 0.1
    let steps = 11.5
 
-   let gridColor
-   let graph
-   let toolTipBG
-   let toolTipFontColor
-   let legend
-   let stroke
-   let radius
+   let gridColor, graph, toolTipBG, toolTipFontColor, legend, stroke, radius, title1, title2
 
    let fullCurrencyName1 = fullCurrencyName[selectedCurrency1]
    let fullCurrencyName2 = fullCurrencyName[selectedCurrency2]
-   let title1
-   let title2
 
    if (windowWidth > 1200) {
       title1 = fullCurrencyName1
@@ -42,19 +42,16 @@ export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray,
       radius = 1.8
    }
 
-   if (isDarkMode) {
-      gridColor = "rgba(255,255,255,0.18)"
-      graph = secondaryColorD
-      toolTipBG = bgColorD
-      toolTipFontColor = secondaryColorD
-      legend = fontColorD
+   graph = secondaryColor
+   toolTipBG = bgColor
+   toolTipFontColor = secondaryColor
 
+   if (isDarkMode) {
+      gridColor = "rgba(255,255,255,0.26)"
+      legend = "rgba(255,255,255,0.85)"
    } else {
-      gridColor = "rgba(0,0,0,0.25)"
-      graph = secondaryColor
-      toolTipBG = bgColor
-      toolTipFontColor = secondaryColor
-      legend = fontColor
+      gridColor = "rgba(0,0,0,0.22)"
+      legend = "rgba(0,0,0,0.8)"
    }
 
    const combinedData = {
@@ -95,7 +92,7 @@ export default function Graph({ selectedCurrency1, selectedCurrency2, dataArray,
             backgroundColor: toolTipBG,
             titleColor: toolTipFontColor,
             bodyColor: toolTipFontColor,
-            borderColor: 'rgba(211,217,212, 1)',
+            borderColor: toolTipFontColor,
             borderWidth: 1,
             titleFont: {
                size: 16,

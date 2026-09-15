@@ -1,4 +1,5 @@
 import CurrencyBeaconLogo from "./CurrencyBeaconLogo"
+import Reactlogo from "./ReactLogo"
 
 export default function Footer() {
 
@@ -7,12 +8,14 @@ export default function Footer() {
    return (<>
       <footer >
          <div className="logos">
-            <span>Powered by:</span>
-            <img src="react-icon.svg" height="18" width="18"></img> <span>React |</span>
-            <CurrencyBeaconLogo /> |
-            <img src="chartjs.svg" height="28" /> <span>Chart.js</span>
+            <Reactlogo />
+            <span>React</span>
+            <span>|</span>
+            <CurrencyBeaconLogo />
+            <span>|</span>
+            <img src="chartjs.svg" /> <span>Chart.js</span>
          </div>
-         <p className="name">Marcel Stacha<span className="copyright"> | </span><span>{year}</span></p>
+         <p className="name">Marcel Stacha <span>({year})</span></p>
       </footer>
    </>)
 }
