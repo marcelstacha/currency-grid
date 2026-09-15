@@ -16,7 +16,7 @@
 
    --star-radius-outer: 12px;
    --star-radius-inner: 1.7rem;
-   
+
    --chf: #9d7cb8;
    --cny: #be656b;
    --czk: #be7ca0;
@@ -169,7 +169,7 @@ footer {
    font-size: .75rem;
    border-radius: 16px;
    color: white;
-   z-index:2 !important;
+   z-index: 2 !important;
    position: relative;
 }
 
@@ -293,11 +293,15 @@ select:hover {
 }
 
 
-.result, #card-3 .result, .title-header h1, #full-currency-name-blue {
+.result,
+#card-3 .result,
+.title-header h1,
+#full-currency-name-blue {
    color: var(--secondary);
 }
 
-.dark-light-toggle, .title-header {
+.dark-light-toggle,
+.title-header {
    fill: var(--secondary);
 }
 
@@ -344,7 +348,10 @@ select:hover {
    text-align: justify;
 }
 
-#card-1, #card-5, .currency-select, .nav-bar,
+#card-1,
+#card-5,
+.currency-select,
+.nav-bar,
 footer {
    -webkit-user-select: none;
    user-select: none;
@@ -501,7 +508,10 @@ section:hover {
    line-height: 2rem;
 }
 
-.currency-box select, .currency-box input, .lower-input, .upper-input {
+.currency-box select,
+.currency-box input,
+.lower-input,
+.upper-input {
    z-index: 10;
    position: relative;
 }
@@ -517,7 +527,8 @@ section:hover {
    text-align: left;
 }
 
-.currency-select, input {
+.currency-select,
+input {
    border: 1px solid var(--contour);
 }
 
@@ -529,7 +540,8 @@ section:hover {
    text-align-last: center;
 }
 
-.currency-select, .currency-select option {
+.currency-select,
+.currency-select option {
    background-color: var(--highlight);
    color: #eee;
 }
@@ -1198,11 +1210,11 @@ section:hover {
       font-size: 1.6rem;
    }
 
-   
+
    .bg-gradient-bg {
       background:
-         radial-gradient(ellipse 42vw 50vh at 30% 630px, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 42vw 50vh at 70% 630px, var(--c2) 33%, transparent 100%);
+         radial-gradient(ellipse 42vw 42vh at 30% 50%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 42vw 42vh at 70% 50%, var(--c2) 33%, transparent 100%);
    }
 
 }
