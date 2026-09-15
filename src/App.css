@@ -524,8 +524,8 @@ section:hover {
 }
 
 .currency-box select,
-.currency-box input, .lower-input {
-   z-index: 3 !important;
+.currency-box input, .lower-input, .upper-input {
+   z-index: 10 !important;
    position: relative;
 }
 
@@ -632,12 +632,12 @@ input {
    z-index: 2 !important;
    top: 50%;
    left: calc(2/3 * 100%);
-   transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%) translateZ(0);
    width: 4.5rem;
    height: 4.5rem;
    background-color: var(--symbol);
    cursor: pointer;
-   animation: fadeIn 3s ease-out 1;
+   animation: fadeIn 2s ease-out 1;
 }
 
 .switch-icon {
