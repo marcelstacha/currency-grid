@@ -133,6 +133,18 @@ body {
    margin: 0;
 }
 
+body::before {
+   content: "";
+   position: fixed;
+   top: -100px;
+   bottom: -100px;
+   left: 0;
+   right: 0;
+   z-index: -1;
+   background: var(--bg);
+   pointer-events: none;
+}
+
 .container,
 .nav-bar {
    max-width: 1680px;
