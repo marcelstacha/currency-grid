@@ -526,6 +526,7 @@ section:hover {
 .currency-box select,
 .currency-box input, .lower-input {
    z-index: 3 !important;
+   position: relative;
 }
 
 .upper-input {
