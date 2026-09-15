@@ -525,7 +525,7 @@ section:hover {
 
 .currency-box select,
 .currency-box input {
-   z-index: 3;
+   z-index: 3 !important;
 }
 
 .upper-input {
@@ -628,7 +628,7 @@ input {
 /* Visual Components */
 .star {
    position: absolute;
-   z-index: 2;
+   z-index: 2 !important;
    top: 50%;
    left: calc(2/3 * 100%);
    transform: translate(-50%, -50%);
