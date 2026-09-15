@@ -208,11 +208,10 @@ input:hover {
 }
 
 .lower-input {
- /*  background: var(--input2);*/
- background:pink;
+   background: var(--input2);
    color: var(--font);
    border-radius: 0 var(--star-radius-inner) 0 var(--star-radius-outer);
-   z-index: 10 !important;
+   pointer-events: none;
 }
 
 .lower-input:hover {
@@ -526,12 +525,8 @@ section:hover {
 
 .currency-box select,
 .currency-box input, .lower-input, .upper-input {
-   z-index: 10 !important;
+   z-index: 10;
    position: relative;
-}
-
-.upper-input {
-   z-index: 9;
 }
 
 .upper-input :hover {

@@ -18,7 +18,7 @@ export default function CurrencyBox({ textValue, handleTextField, currencySymbol
             selectedCurrency2={selectedCurrency2}
             handleCurrencies={handleCurrencies}
          />
-         <input value={(!isNaN(textValue2) && textValue !== "") ? textValue2.toFixed(2) : "?"} className="lower-input" onChange={handleTextField} aria-label="Ergebnis" ></input>
+         <input value={(!isNaN(textValue2) && textValue !== "") ? textValue2.toFixed(2) : "?"} className="lower-input" onChange={handleTextField} aria-label="Ergebnis" readOnly ></input>
          <CurrencySelector
             no={2}
             currencySymbols={currencySymbols}
