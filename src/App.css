@@ -95,8 +95,8 @@
    z-index: 0;
    pointer-events: none;
    background:
-   radial-gradient(ellipse 26rem 32vh at 40% 61%, var(--c1) 33%, transparent 100%),
-      radial-gradient(ellipse 26rem 32vh at 60% 61%, var(--c2) 33%, transparent 100%);
+      radial-gradient(ellipse 26rem 33vh at 40% 58%, var(--c1) 33%, transparent 100%),
+      radial-gradient(ellipse 26rem 33vh at 60% 58%, var(--c2) 33%, transparent 100%);
    filter: var(--filter-bg);
 }
 
@@ -169,6 +169,8 @@ footer {
    font-size: .75rem;
    border-radius: 16px;
    color: white;
+   z-index:2 !important;
+   position: relative;
 }
 
 
@@ -905,8 +907,8 @@ section:hover {
    .bg-gradient-bg {
 
       background:
-         radial-gradient(ellipse 40vw 30vh at 30% 40%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 40vw 30vh at 70% 40%, var(--c2) 33%, transparent 100%);
+         radial-gradient(ellipse 40vw 39vh at 30% 47%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 40vw 39vh at 70% 47%, var(--c2) 33%, transparent 100%);
    }
 
    .currency-box input {
@@ -1194,6 +1196,14 @@ section:hover {
 
    .currency-select option {
       font-size: 1.6rem;
+   }
+
+   
+   .bg-gradient-bg {
+
+      background:
+         radial-gradient(ellipse 40vw 39vh at 30% 45%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 40vw 39vh at 70% 45%, var(--c2) 33%, transparent 100%);
    }
 
 }
