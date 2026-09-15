@@ -208,10 +208,11 @@ input:hover {
 }
 
 .lower-input {
-   background: var(--input2);
+ /*  background: var(--input2);*/
+ background:black;
    color: var(--font);
    border-radius: 0 var(--star-radius-inner) 0 var(--star-radius-outer);
-   z-index: 10;
+   z-index: 10 !important;
 }
 
 .lower-input:hover {
