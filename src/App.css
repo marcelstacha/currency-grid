@@ -7,8 +7,20 @@
    font-display: swap;
 }
 
+@font-face {
+   font-family: GeistMono;
+   src: url(/GeistMono.ttf);
+   font-display: swap;
+}
+
+@font-face {
+   font-family: IBMPlexSans;
+   src: url(/IBMPlexSans.ttf);
+   font-display: swap;
+}
+
 :root {
-   font-family: JetBrainsMono, system-ui, Avenir, Helvetica, Arial, sans-serif;
+   font-family: IBMPlexSans, system-ui, Avenir, Helvetica, Arial, sans-serif;
    font-size: 18pt;
    font-weight: 400;
    line-height: 1.75;
@@ -33,28 +45,28 @@
 }
 
 [data-dark-mode] {
-   transition: background-color .5s;
+   transition: background-color 0.5s;
    content-visibility: auto;
 }
 
-[data-dark-mode=true] {
+[data-dark-mode="true"] {
    --bg: linear-gradient(0deg, #000 0%, #131313 100%);
-   --main: #21262cbb;
+   --main: rgba(33, 38, 44, 0.83);
+   --hover-main: rgba(33, 38, 44, 0.7);
+   --graph: rgba(33, 38, 44, 0.83);
+   --hover-graph: rgba(33, 38, 44, 0.8);
    --input: hsl(206, 15%, 23%);
    --input2: hsl(180, 30%, 7%);
-   --font: #D3D9D4;
+   --font: #d3d9d4;
    --contour: hsl(0, 0%, 0%);
-   --secondary: #66FCF1;
+   --secondary: #66fcf1;
    --highlight: hsl(180, 43%, 28%);
    --symbol: rgb(0, 255, 238);
    --filter: blur(36px) saturate(3) contrast(1) brightness(0.65);
-   --filter-bg: saturate(2.7) contrast(1) brightness(0.9);
+   --filter-bg: saturate(3.5) contrast(1) brightness(0.9);
    --filter-mobile: blur(18px) saturate(4.5) brightness(0.65);
    --shadow: 0 0px 15px rgba(0, 0, 0, 0.55);
    --border: 1px solid rgba(0, 0, 0, 0.5);
-   --hover-section: rgba(33, 38, 44, 0.7);
-   --hover-section2: rgba(33, 38, 44, 0.8);
-   --hover-section3: rgba(33, 38, 44, 0.68);
    --hover-button: hsl(180, 100%, 28%);
    --hover-input: hsl(206, 15%, 19%);
    --hover-input2: hsl(180, 30%, 5%);
@@ -62,9 +74,12 @@
    --react: #61dafb;
 }
 
-[data-dark-mode=false] {
+[data-dark-mode="false"] {
    --bg: linear-gradient(0deg, rgb(221, 221, 221) 0%, rgb(242, 242, 242) 100%);
-   --main: #ffffffbb;
+   --main: rgba(255, 255, 255, 0.75);
+   --hover-main: rgba(250, 250, 250, 0.6);
+   --graph: rgba(255, 255, 255, 0.82);
+   --hover-graph: rgba(255, 255, 255, 0.7);
    --input: hsl(0, 0%, 100%);
    --input2: hsl(0, 0%, 79%);
    --font: #262c27;
@@ -77,9 +92,6 @@
    --filter-mobile: blur(16px) saturate(4) contrast(0.8);
    --shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
    --border: 1px solid rgba(255, 255, 255, 1);
-   --hover-section: rgba(250, 250, 250, 0.6);
-   --hover-section2: rgba(255, 255, 255, 0.8);
-   --hover-section3: rgba(255, 255, 255, 0.68);
    --hover-button: hsl(167, 100%, 22%);
    --hover-input: hsl(0, 0%, 94%);
    --hover-input2: hsl(0, 0%, 77%);
@@ -95,8 +107,16 @@
    z-index: 0;
    pointer-events: none;
    background:
-      radial-gradient(ellipse 25.5rem 26vh at 40% 55%, var(--c1) 33%, transparent 100%),
-      radial-gradient(ellipse 25.5rem 26vh at 60% 55%, var(--c2) 33%, transparent 100%);
+      radial-gradient(
+         ellipse 25.5rem 26vh at 40% 55%,
+         var(--c1) 33%,
+         transparent 100%
+      ),
+      radial-gradient(
+         ellipse 25.5rem 26vh at 60% 55%,
+         var(--c2) 33%,
+         transparent 100%
+      );
    filter: var(--filter-bg);
 }
 
@@ -134,7 +154,6 @@ body {
    padding: 0 0.5rem;
 }
 
-
 h1,
 h2,
 h3,
@@ -143,10 +162,40 @@ h5,
 h6 {
    margin: 0;
    padding: 0;
+   font-family: "GeistMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {
    font-size: 28pt;
+   font-weight: 600;
+   font-family:
+      "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+input,
+select {
+   font-family: "GeistMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+hr {
+   width: 96%;
+   margin: 0;
+   margin-top: 0.25rem;
+   border-color: var(--contour);
+   align-self: center;
+}
+
+.eighty {
+   height: 85%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   font-size: clamp(0.6rem, 7cqw, 1rem);
+}
+
+h5 {
+   font-size: clamp(0.6rem, 6.2cqw, 1rem);
+   font-weight: 700;
 }
 
 nav {
@@ -171,8 +220,9 @@ footer {
    color: var(--font);
    z-index: 2 !important;
    position: relative;
+   font-family:
+      "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
-
 
 /* Base Inputs & Selects */
 input,
@@ -190,7 +240,7 @@ input:focus {
 }
 
 input:hover {
-   transition: .3s;
+   transition: 0.3s;
 }
 
 .upper-input {
@@ -223,16 +273,16 @@ input:hover {
 }
 
 input::placeholder {
-   opacity: .7;
+   opacity: 0.7;
    color: var(--highlight);
 }
 
-input[type=number] {
+input[type="number"] {
    appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
    margin: 0;
    -webkit-appearance: none;
 }
@@ -247,17 +297,19 @@ select {
 }
 
 select:hover {
-   transition: .3s;
+   transition: 0.3s;
    background: var(--hover-button);
 }
 
 .bold,
 .full-currency-name {
-   font-weight: 700;
+   font-weight: 600;
 }
 
 .graph-header {
    font-weight: 200;
+   font-family:
+      "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
 }
 
 .name {
@@ -265,7 +317,7 @@ select:hover {
 }
 
 .gap {
-   margin-top: .4rem;
+   margin-top: 0.4rem;
 }
 
 @keyframes pulse {
@@ -292,6 +344,9 @@ select:hover {
    cursor: pointer;
 }
 
+.result {
+   font-weight: 500;
+}
 
 .result,
 #card-3 .result,
@@ -330,17 +385,17 @@ select:hover {
 }
 
 .logos img:nth-child(2) {
-   height: .9rem;
+   height: 0.9rem;
 }
 
 .logos svg {
-   height: .8rem;
+   height: 0.8rem;
 }
 
 .icon-container {
    display: flex;
    align-items: center;
-   transition: .5s;
+   transition: 0.5s;
    height: 100%;
 }
 
@@ -404,8 +459,8 @@ section {
    position: relative;
    display: grid;
    align-content: center;
-   transition: all .2s;
-   box-shadow: 0 1px 15px rgba(0, 0, 0, .08);
+   transition: all 0.2s;
+   box-shadow: 0 1px 15px rgba(0, 0, 0, 0.08);
    border-radius: 16px;
    background-color: var(--main);
    background-position: center;
@@ -415,10 +470,9 @@ section {
 }
 
 section:hover {
-   transition: .3s;
-   background: var(--hover-section);
+   transition: 0.3s;
+   background: var(--hover-main);
 }
-
 
 .card {
    box-shadow: var(--shadow);
@@ -430,11 +484,11 @@ section:hover {
    grid-row: span 3;
    grid-column: span 4;
    height: auto !important;
-   background: var(--hover-section2);
+   background: var(--graph);
 }
 
 #card-1:hover {
-   background: var(--hover-section3);
+   background: var(--hover-graph);
 }
 
 #card-2,
@@ -474,24 +528,40 @@ section:hover {
 .top-card {
    display: flex;
    flex-direction: column;
-   justify-content: center;
-   flex: 1;
    font-size: clamp(0.6rem, 7cqw, 1rem);
+   padding-top: 2%;
+   height: 18%;
+   justify-content: center;
+}
+
+.mid-card {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   font-size: clamp(0.6rem, 7cqw, 1rem);
+   height: 65%;
+   gap: 0.5rem;
+}
+
+#card-4 .mid-card {
+   gap: 0;
 }
 
 .sub-info {
    display: flex;
    align-content: center;
    justify-content: center;
-   height: 40px;
+   height: 15%;
    flex-shrink: 0;
-   font-size: clamp(0.5rem, 4.75cqw, 0.75rem);
+   font-size: clamp(0.6rem, 4.75cqw, 0.75rem);
+   font-weight: 400;
+   opacity: 0.7;
 }
 
 .currency-box {
    display: grid;
    grid-template-columns: 2fr 1fr;
-   transition: all .4s;
+   transition: all 0.4s;
    padding: 1rem;
    height: 100%;
    box-sizing: border-box;
@@ -507,7 +577,6 @@ section:hover {
    width: 100%;
    height: 100%;
    padding-left: 1.3rem;
-   font-family: JetBrainsMono;
    font-size: 1.95rem;
    line-height: 2rem;
 }
@@ -525,9 +594,9 @@ section:hover {
 }
 
 .currency-box-label {
-   padding: .33rem 2.4rem;
+   padding: 0.33rem 2.4rem;
    color: var(--highlight);
-   font-size: .65rem;
+   font-size: 0.65rem;
    text-align: left;
 }
 
@@ -538,8 +607,7 @@ input {
 
 .currency-select {
    width: 100%;
-   font-family: JetBrainsMono;
-   font-size: .9rem;
+   font-size: 0.9rem;
    text-align: center;
    text-align-last: center;
 }
@@ -552,11 +620,6 @@ input {
 
 .currency-select option {
    text-align: left;
-}
-
-/* Trend & Values */
-.trend {
-   text-align: center;
 }
 
 .same {
@@ -583,7 +646,7 @@ input {
 .funfact {
    opacity: 1;
    padding: 0 1.2rem;
-   font-size: clamp(0.6rem, 6.2cqw, 1rem);
+   font-size: clamp(0.6rem, 6.25cqw, 1rem);
    line-height: 1.4;
    -webkit-hyphens: auto;
    /* Für Safari */
@@ -596,7 +659,7 @@ input {
    margin: auto;
    width: 96%;
    height: 28.5rem;
-   padding-bottom: .5rem;
+   padding-bottom: 0.5rem;
 }
 
 @keyframes fadeIn {
@@ -617,7 +680,7 @@ input {
    position: absolute;
    z-index: 2 !important;
    top: 50%;
-   left: calc(2/3 * 100%);
+   left: calc(2 / 3 * 100%);
    transform: translate(-50%, -50%) translateZ(0);
    width: 4.5rem;
    height: 4.5rem;
@@ -636,98 +699,74 @@ input {
 }
 
 .switch-icon:hover svg {
-   animation: rotate .75s linear;
+   animation: rotate 0.75s linear;
 }
 
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+
+/* 5. Einmalig verschieben & drehen (als feste Einheit) */
+/* 1. Kachel-Layout: Zwingt den Button, die volle Kachelhöhe auszufüllen */
+/* 1. Kachel-Layout */
+#card-5 {
+   display: flex;
+   align-items: stretch;
+}
+
+/* 2. Bounding-Box (Schutzabstand) */
 .bill-container {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   height: inherit;
-   padding-bottom: .35rem;
-   cursor: pointer;
-   width: 100%;
-}
-
-.bill {
-   margin: -0.5rem;
-   border-radius: 3px;
-   height: 3.7rem;
-   object-fit: contain;
-   will-change: transform, opacity;
+   display: grid;
    place-items: center;
-}
-
-.foreground-images .bill {
-   image-rendering: high-quality;
-}
-
-.bill-1 {
-   z-index: 12;
-}
-
-.bill-2 {
-   rotate: -9deg;
-}
-
-.shadow .bill {
-   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-}
-
-.blurred-images {
-   position: absolute;
-   left: 0;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
    width: 100%;
    height: 100%;
 }
 
-.blurred-images {
-   z-index: 0;
-   top: 0;
-   overflow: hidden;
-   border-radius: 16px;
-   will-change: transform, filter;
-}
-
-.blurred-bg {
-   transform: scale(2, 1.2);
-}
-
-.blurred-bg.bill-1 {
-   top: 1.25rem;
-   left: -12rem;
-}
-
-.blurred-bg.bill-2 {
-   top: -0.5rem;
-   left: -3rem;
-   rotate: 0deg;
-}
-
+/* 3. DIE STARRE LEINWAND (Das Geheimnis für synchrones Skalieren) */
 .foreground-images {
-   position: relative;
-   z-index: 2;
-   display: flex;
-   flex-direction: column;
+   display: grid;
+   place-items: center;
    width: 100%;
+   height: 100%;
+   position: absolute;
+   inset: 0;
 }
 
-.blurred {
-   opacity: 0.75;
-   filter: var(--filter);
+/* 4. Container deckungsgleich über die gesamte Leinwand spannen */
+.bill-1,
+.bill-2 {
+   inset: 0; /* Zieht den Container über die vollen 100% der Leinwand */
+   display: grid;
 }
 
-.blurred-bg {
-   filter: var(--filter-bg);
+/* 5. Einmalig verschieben & drehen */
+.bill-1 {
+   z-index: 12;
+   transform: translateY(-1.33rem) scale(0.7);
 }
 
+.bill-2 {
+   z-index: 11;
+   transform: translateY(0.75rem) rotate(-9deg) scale(0.7);
+}
+
+/* 6. BILDER: Dürfen sich nur noch nach der Leinwand-Breite richten! */
+img.bill {
+   width: 100%; /* Nimmt maximal die Breite des Containers ein */
+   height: auto; /* Behält das korrekte Seitenverhältnis bei */
+   object-fit: contain;
+   margin: 0 !important;
+   border-radius: 4px;
+   will-change: transform, opacity;
+   align-self: anchor-center;
+}
+
+.shadow {
+   box-shadow: 0 0.3rem 1.75rem rgba(0, 0, 0, 0.5);
+}
 /* =========================================
    5. MEDIA QUERIES
-========================================= 
+=========================================
 
 @media (min-width: 1680px){
    :root, body {
@@ -735,14 +774,19 @@ input {
    }
 }
 */
-
 @media (max-width: 1680px) {
-
    .bg-gradient-bg {
-
       background:
-         radial-gradient(ellipse 33rem 33vh at 26% 50%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 33rem 33vh at 74% 50%, var(--c2) 33%, transparent 100%);
+         radial-gradient(
+            ellipse 33rem 33vh at 26% 50%,
+            var(--c1) 33%,
+            transparent 100%
+         ),
+         radial-gradient(
+            ellipse 33rem 33vh at 74% 50%,
+            var(--c2) 33%,
+            transparent 100%
+         );
    }
 
    :root {
@@ -772,10 +816,6 @@ input {
       height: 200px !important;
    }
 
-   .bill {
-      height: 3.2rem;
-   }
-
    .blurred {
       filter: var(--filter-mobile);
    }
@@ -785,7 +825,7 @@ input {
    }
 
    .graph-refresh {
-      top: .7rem;
+      top: 0.7rem;
    }
 
    .graph-refresh svg {
@@ -801,30 +841,39 @@ input {
    }
 
    .switch-icon {
-      font-size: .8rem;
+      font-size: 0.8rem;
    }
 
    .currency-box-label {
-      padding: .15rem 2.4rem;
+      padding: 0.15rem 2.4rem;
    }
 
    .sub-info {
       height: 36px;
    }
+
+   h5 {
+      line-height: 1rem;
+   }
+
+   .bill-1 {
+      z-index: 12;
+      transform: translateY(-1.33rem) scale(0.6);
+   }
+
+   .bill-2 {
+      z-index: 11;
+      transform: translateY(0.75rem) rotate(-9deg) scale(0.6);
+   }
+
+   .shadow {
+      box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.5);
+   }
 }
 
 @media (max-width: 1400px) {
-
-   .foreground-images>div>img {
-      height: 2.8rem;
-   }
-
-   .blurred-images>div>img {
-      height: 2.6rem;
-   }
-
    footer {
-      font-size: .6rem;
+      font-size: 0.6rem;
    }
 
    .currency-box input {
@@ -832,22 +881,31 @@ input {
    }
 
    .currency-select {
-      font-size: .8rem;
+      font-size: 0.8rem;
    }
 
    .currency-select option {
       font-size: 1rem;
    }
+
+   h5 {
+      font-size: clamp(0.62rem, 5.6cqw, 1rem);
+   }
 }
 
 @media (max-width: 1200px) {
-
-
    .bg-gradient-bg {
-
       background:
-         radial-gradient(ellipse 40vw 24vh at 30% 40%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 40vw 24vh at 70% 40%, var(--c2) 33%, transparent 100%);
+         radial-gradient(
+            ellipse 40vw 24vh at 30% 40%,
+            var(--c1) 33%,
+            transparent 100%
+         ),
+         radial-gradient(
+            ellipse 40vw 24vh at 70% 40%,
+            var(--c2) 33%,
+            transparent 100%
+         );
    }
 
    :root {
@@ -864,6 +922,10 @@ input {
       height: 160px !important;
    }
 
+   h5 {
+      font-size: clamp(0.5rem, 6.2cqw, 1rem);
+   }
+
    .diagram {
       height: 18rem;
    }
@@ -873,16 +935,8 @@ input {
    }
 
    .funfact {
-      padding: .71rem;
-      font-size: clamp(0.5rem, 6cqw, 1rem);
-   }
-
-   .foreground-images>div>img {
-      height: 2.5rem;
-   }
-
-   .blurred-images>div>img {
-      height: 2.3rem;
+      padding: 0.71rem;
+      font-size: clamp(0.55rem, 6cqw, 1rem);
    }
 
    .graph-refresh {
@@ -898,11 +952,11 @@ input {
    }
 
    .currency-select {
-      font-size: .65rem;
+      font-size: 0.65rem;
    }
 
    .switch-icon {
-      font-size: .7rem;
+      font-size: 0.7rem;
    }
 
    .currency-box-label {
@@ -921,22 +975,21 @@ input {
    }
 
    .bg-gradient-bg {
-
       background:
-         radial-gradient(ellipse 40vw 39vh at 30% 47%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 40vw 39vh at 70% 47%, var(--c2) 33%, transparent 100%);
+         radial-gradient(
+            ellipse 40vw 39vh at 30% 47%,
+            var(--c1) 33%,
+            transparent 100%
+         ),
+         radial-gradient(
+            ellipse 40vw 39vh at 70% 47%,
+            var(--c2) 33%,
+            transparent 100%
+         );
    }
 
    .currency-box input {
       font-size: 1.4rem;
-   }
-
-   .foreground-images>div>img {
-      height: 2.5rem;
-   }
-
-   .blurred-images>div>img {
-      height: 2.3rem;
    }
 
    .nav-bar {
@@ -968,11 +1021,11 @@ input {
    }
 
    h3 {
-      padding-top: .5rem;
+      padding-top: 0.5rem;
    }
 
    .top-card {
-      font-size: .61rem;
+      font-size: 0.61rem;
    }
 
    .gap {
@@ -1029,11 +1082,11 @@ input {
    }
 
    .switch-icon {
-      font-size: .65rem;
+      font-size: 0.65rem;
    }
 
    .sub-info {
-      font-size: .55rem;
+      font-size: 0.55rem;
    }
 
    .star {
@@ -1045,6 +1098,29 @@ input {
       top: 1.2rem !important;
    }
 
+   .mid-card,
+   .eighty {
+      font-size: clamp(0.6rem, 6cqw, 1rem);
+      gap: 0rem !important;
+   }
+
+   .eighty h5 {
+      font-size: clamp(0.5rem, 5.3cqw, 1rem);
+   }
+
+   .bill-1 {
+      z-index: 12;
+      transform: translateY(-1.15rem) scale(0.48);
+   }
+
+   .bill-2 {
+      z-index: 11;
+      transform: translateY(0.5rem) rotate(-9deg) scale(0.48);
+   }
+
+   .shadow {
+      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+   }
 }
 
 @media (max-width: 768px) {
@@ -1057,27 +1133,29 @@ input {
    }
 
    .funfact {
-      font-size: clamp(0.6rem, 3.9cqw, 1rem);
-   }
-
-   .foreground-images>div>img {
-      height: 2.4rem;
-   }
-
-   .blurred-images>div>img {
-      height: 2.2rem;
+      font-size: clamp(0.7rem, 3.9cqw, 1rem);
    }
 
    .logos div {
       display: none;
    }
 
+   .bill-1 {
+      z-index: 12;
+      transform: translateY(-1.15rem) scale(0.6);
+   }
+
+   .bill-2 {
+      z-index: 11;
+      transform: translateY(0.65rem) rotate(-9deg) scale(0.6);
+   }
+
+   .shadow {
+      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+   }
 }
 
 @media (max-width: 576px) {
-
-
-
    body,
    html {
       overflow-x: hidden;
@@ -1090,9 +1168,9 @@ input {
    }
 
    .funfact {
-      font-size: clamp(0.65rem, 5cqw, 1rem);
+      font-size: clamp(0.88rem, 5cqw, 1rem);
       line-height: 1.3;
-      padding: .9rem;
+      padding: 0.9rem;
    }
 
    nav {
@@ -1112,7 +1190,7 @@ input {
    }
 
    .currency-select {
-      font-size: .85rem;
+      font-size: 0.85rem;
    }
 
    .currency-box select {
@@ -1163,14 +1241,6 @@ input {
       padding: 1rem;
    }
 
-   .foreground-images>div>img {
-      height: 4rem;
-   }
-
-   .blurred-images>div>img {
-      height: 3.8rem;
-   }
-
    section {
       border-radius: 10px;
    }
@@ -1180,7 +1250,7 @@ input {
    }
 
    .graph-refresh {
-      top: .8rem;
+      top: 0.8rem;
       right: 4.5%;
    }
 
@@ -1190,7 +1260,7 @@ input {
    }
 
    .switch-icon {
-      font-size: .9rem;
+      font-size: 0.9rem;
    }
 
    .top-card {
@@ -1214,18 +1284,49 @@ input {
       font-size: 1.6rem;
    }
 
-
    .bg-gradient-bg {
       background:
-         radial-gradient(ellipse 42vw 42vh at 30% 50%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 42vw 42vh at 70% 50%, var(--c2) 33%, transparent 100%);
+         radial-gradient(
+            ellipse 42vw 42vh at 30% 50%,
+            var(--c1) 33%,
+            transparent 100%
+         ),
+         radial-gradient(
+            ellipse 42vw 42vh at 70% 50%,
+            var(--c2) 33%,
+            transparent 100%
+         );
    }
 
+   h5 {
+      font-size: clamp(0.6rem, 6.5cqw, 1rem);
+   }
+
+   .eighty,
+   .mid-card {
+      font-size: clamp(0.8rem, 9cqw, 1rem);
+   }
+
+   .bill-1 {
+      z-index: 12;
+      transform: translateY(-1rem) scale(0.65);
+   }
+
+   .bill-2 {
+      z-index: 11;
+      transform: translateY(0.3rem) rotate(-9deg) scale(0.65);
+   }
+
+   .shadow {
+      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+   }
 }
 
 @media (max-width: 400px) {
    .funfact {
-      font-size: 0.68rem;
+      font-size: clamp(0.75rem, 5cqw, 1rem);
+      line-height: 1.3;
+      padding: 0.9rem;
    }
 
    .top-card {
@@ -1234,7 +1335,7 @@ input {
 
    .sub-info {
       height: 28px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
    }
 
    .currency-box input {
@@ -1245,11 +1346,26 @@ input {
       font-size: 1.8rem;
    }
 
-   .foreground-images>div>img {
-      height: 3.5rem;
+   h5 {
+      font-size: clamp(0.66rem, 5cqw, 1rem);
    }
 
-   .blurred-images>div>img {
-      height: 3.3rem;
+   .eighty,
+   .mid-card {
+      font-size: clamp(0.8rem, 9cqw, 1rem);
+   }
+
+   .bill-1 {
+      z-index: 12;
+      transform: translateY(-1.25rem) scale(0.8);
+   }
+
+   .bill-2 {
+      z-index: 11;
+      transform: translateY(0.65rem) rotate(-9deg) scale(0.8);
+   }
+
+   .shadow {
+      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
    }
 }

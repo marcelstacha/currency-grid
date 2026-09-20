@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const funfactsArray = [
-   "DEU, NLD, BEL, LUX, FRA, IRL, ESP, ITA, EST, LVA, LTU & GRC führten den Euro 2002 als gemeinsame Währung ein.",
+/*
+
+  "DEU, NLD, BEL, LUX, FRA, IRL, ESP, ITA, EST, LVA, LTU & GRC führten den Euro 2002 als gemeinsame Währung ein.",
    "Das Euro-Symbol (€) wurde 1975 vom Deutschen Arthur Eisenmenger in Luxemburg entworfen.",
    "Über 340 Millionen Menschen in Europa nutzen den Euro als ihre Hauptwährung.",
    "Der Euro ist die gemeinsame Währung von 21 der 27 EU-Mitgliedstaaten, die zusammen als Eurozone bezeichnet werden.",
@@ -13,12 +14,6 @@ const funfactsArray = [
    "Kroatien löste am 01. Januar 2023 die bisherige Währung Kuna durch den Euro ab.",
    "Rumänien plant 2029 die Einführung des Euro, nachdem es 2007 der Europäischen Union beigetreten ist.",
    "Am 12. Juli 2022 erreichte der Euro-Dollar-Wechselkurs seit fast 20 Jahren erneut ein Verhältnis von 1:1.",
-   "Der Euro wurde am 1. Januar 1999 als Buchgeld eingeführt und trat am 1. Januar 2002 in Form von Bargeld in 12 EU-Ländern in Kraft.",
-   "Die European Currency Unit (ECU) diente ab 1979 als Vorläufer des Euro und wurde am 1. Januar 1999 im Verhältnis 1:1 als Euro fortgeführt.",
-
-   "Die japanische 1-Yen-Münze besteht zu 100 % aus Aluminium und ist so leicht (1 Gramm), dass sie auf der Wasseroberfläche schwimmen kann.",
-   "China war während der Song-Dynastie im 11. Jahrhundert das erste Land der Welt, das Papiergeld als offizielles Zahlungsmittel einführte.",
-   "Weltweit gibt es heute rund 160 anerkannte offizielle Währungen, die in den 193 Mitgliedstaaten der Vereinten Nationen genutzt werden.",
    "Amerikanische Banknoten bestehen nicht aus gewöhnlichem Papier, sondern zu 75 % aus Baumwolle und zu 25 % aus Leinen.",
    "Der US-Dollar ist die unangefochtene Leitwährung der Welt und macht über 60 % aller weltweiten Währungsreserven aus.",
    "Das Britische Pfund Sterling ist die älteste Währung der Welt, die noch immer kontinuierlich im Umlauf ist.",
@@ -26,32 +21,58 @@ const funfactsArray = [
    "Die aktuellen Banknoten des Schweizer Frankens sind im Gegensatz zu fast allen anderen Währungen der Welt vertikal gestaltet.",
    "Der Schweizer Franken ist der letzte offiziell im Umlauf befindliche Franken in Europa.",
    "Das japanische Wort 'Yen' bedeutet übersetzt 'runder Gegenstand'.",
-   "Zwischen Januar 2014 und Juni 2019 war der Yen offizielles Zahlungsmittel in Simbabwe."
-]
+   "Zwischen Januar 2014 und Juni 2019 war der Yen offizielles Zahlungsmittel in Simbabwe.",
+*/
+
+const funfactsArray = [
+   "Der Euro wurde am 1. Januar 1999 als Buchgeld eingeführt und trat am 1. Januar 2002 in Form von Bargeld in 12 EU-Ländern in Kraft.",
+   "Die European Currency Unit (ECU) diente ab 1979 als Vorläufer des Euro und wurde am 1. Januar 1999 im Verhältnis 1:1 als Euro fortgeführt.",
+
+   "Die japanische 1-Yen-Münze besteht zu 100 % aus Aluminium und ist so leicht (1 Gramm), dass sie auf der Wasseroberfläche schwimmen kann.",
+   "China war während der Song-Dynastie im 11. Jahrhundert das erste Land der Welt, das Papiergeld als offizielles Zahlungsmittel einführte.",
+   "Weltweit gibt es heute rund 160 anerkannte offizielle Währungen, die in den 193 Mitgliedstaaten der Vereinten Nationen genutzt werden.",
+];
 
 export default function useFunfact() {
+   const [factState, setFactState] = useState(() => {
+      const index = Math.floor(Math.random() * funfactsArray.length);
+      return {
+         current: funfactsArray[index],
+         remaining: funfactsArray.filter((_, i) => i !== index),
+      };
+   });
 
-   const [remainingFacts, setRemainingFacts] = useState(funfactsArray)
-   const [funfact, setFunfact] = useState()
+   const timerRef = useRef(null);
+
+   const getNextFunfact = () => {
+      setFactState((prev) => {
+         const currentRemaining =
+            prev.remaining.length === 0 ? funfactsArray : prev.remaining;
+         const index = Math.floor(Math.random() * currentRemaining.length);
+         return {
+            current: currentRemaining[index],
+            remaining: currentRemaining.filter((_, i) => i !== index),
+         };
+      });
+   };
+
+   const startTimer = () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      timerRef.current = setInterval(getNextFunfact, 8300);
+   };
 
    useEffect(() => {
-      getNextFunfact()
+      startTimer();
+      return () => {
+         if (timerRef.current) clearInterval(timerRef.current);
+      };
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [])
+   }, []);
 
-   function getNextFunfact() {
+   const handleManualClick = () => {
+      getNextFunfact();
+      startTimer(); // Resettet den Timer, damit der Text nach einem Klick nicht sofort wieder wechselt
+   };
 
-      let remaining = remainingFacts
-
-      if (remaining.length == 0) {
-         remaining = funfactsArray
-      }
-
-      const index = Math.floor(Math.random() * remaining.length)
-      setFunfact(remaining[index])
-      remaining = remaining.filter((prev, id) => id != index)
-      setRemainingFacts(remaining)
-   }
-
-   return { funfact, getNextFunfact };
+   return { funfact: factState.current, handleManualClick };
 }
