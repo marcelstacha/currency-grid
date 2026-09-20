@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-/*
-
-  "DEU, NLD, BEL, LUX, FRA, IRL, ESP, ITA, EST, LVA, LTU & GRC führten den Euro 2002 als gemeinsame Währung ein.",
+const funfactsArray = [
+   "Der Euro wurde am 1. Januar 1999 als Buchgeld eingeführt und trat am 1. Januar 2002 in Form von Bargeld in 12 EU-Ländern in Kraft.",
+   "Die European Currency Unit (ECU) diente ab 1979 als Vorläufer des Euro und wurde am 1. Januar 1999 im Verhältnis 1:1 als Euro fortgeführt.",
+   "DEU, NLD, BEL, LUX, FRA, IRL, ESP, ITA, EST, LVA, LTU & GRC führten den Euro 2002 als gemeinsame Währung ein.",
    "Das Euro-Symbol (€) wurde 1975 vom Deutschen Arthur Eisenmenger in Luxemburg entworfen.",
    "Über 340 Millionen Menschen in Europa nutzen den Euro als ihre Hauptwährung.",
    "Der Euro ist die gemeinsame Währung von 21 der 27 EU-Mitgliedstaaten, die zusammen als Eurozone bezeichnet werden.",
@@ -22,12 +23,6 @@ import { useEffect, useRef, useState } from "react";
    "Der Schweizer Franken ist der letzte offiziell im Umlauf befindliche Franken in Europa.",
    "Das japanische Wort 'Yen' bedeutet übersetzt 'runder Gegenstand'.",
    "Zwischen Januar 2014 und Juni 2019 war der Yen offizielles Zahlungsmittel in Simbabwe.",
-*/
-
-const funfactsArray = [
-   "Der Euro wurde am 1. Januar 1999 als Buchgeld eingeführt und trat am 1. Januar 2002 in Form von Bargeld in 12 EU-Ländern in Kraft.",
-   "Die European Currency Unit (ECU) diente ab 1979 als Vorläufer des Euro und wurde am 1. Januar 1999 im Verhältnis 1:1 als Euro fortgeführt.",
-
    "Die japanische 1-Yen-Münze besteht zu 100 % aus Aluminium und ist so leicht (1 Gramm), dass sie auf der Wasseroberfläche schwimmen kann.",
    "China war während der Song-Dynastie im 11. Jahrhundert das erste Land der Welt, das Papiergeld als offizielles Zahlungsmittel einführte.",
    "Weltweit gibt es heute rund 160 anerkannte offizielle Währungen, die in den 193 Mitgliedstaaten der Vereinten Nationen genutzt werden.",
@@ -71,7 +66,7 @@ export default function useFunfact() {
 
    const handleManualClick = () => {
       getNextFunfact();
-      startTimer(); // Resettet den Timer, damit der Text nach einem Klick nicht sofort wieder wechselt
+      startTimer();
    };
 
    return { funfact: factState.current, handleManualClick };
