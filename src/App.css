@@ -107,16 +107,8 @@
    z-index: 0;
    pointer-events: none;
    background:
-      radial-gradient(
-         ellipse 25.5rem 26vh at 40% 55%,
-         var(--c1) 33%,
-         transparent 100%
-      ),
-      radial-gradient(
-         ellipse 25.5rem 26vh at 60% 55%,
-         var(--c2) 33%,
-         transparent 100%
-      );
+      radial-gradient(ellipse 25.5rem 26vh at 40% 55%, var(--c1) 33%, transparent 100%),
+      radial-gradient(ellipse 25.5rem 26vh at 60% 55%, var(--c2) 33%, transparent 100%);
    filter: var(--filter-bg);
 }
 
@@ -168,8 +160,7 @@ h6 {
 h1 {
    font-size: 28pt;
    font-weight: 600;
-   font-family:
-      "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
+   font-family: "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 input,
@@ -220,8 +211,7 @@ footer {
    color: var(--font);
    z-index: 2 !important;
    position: relative;
-   font-family:
-      "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
+   font-family: "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 /* Base Inputs & Selects */
@@ -308,8 +298,7 @@ select:hover {
 
 .graph-header {
    font-weight: 200;
-   font-family:
-      "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+   font-family: "JetBrainsMono", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
 }
 
 .name {
@@ -742,12 +731,12 @@ input {
 /* 5. Einmalig verschieben & drehen */
 .bill-1 {
    z-index: 12;
-   transform: translateY(-1.33rem) scale(0.7);
+   transform: translateY(-1.5rem) scale(0.75);
 }
 
 .bill-2 {
    z-index: 11;
-   transform: translateY(0.75rem) rotate(-9deg) scale(0.7);
+   transform: translateY(0.75rem) rotate(-9deg) scale(0.75);
 }
 
 /* 6. BILDER: Dürfen sich nur noch nach der Leinwand-Breite richten! */
@@ -777,16 +766,8 @@ img.bill {
 @media (max-width: 1680px) {
    .bg-gradient-bg {
       background:
-         radial-gradient(
-            ellipse 33rem 33vh at 26% 50%,
-            var(--c1) 33%,
-            transparent 100%
-         ),
-         radial-gradient(
-            ellipse 33rem 33vh at 74% 50%,
-            var(--c2) 33%,
-            transparent 100%
-         );
+         radial-gradient(ellipse 33rem 33vh at 26% 50%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 33rem 33vh at 74% 50%, var(--c2) 33%, transparent 100%);
    }
 
    :root {
@@ -896,16 +877,8 @@ img.bill {
 @media (max-width: 1200px) {
    .bg-gradient-bg {
       background:
-         radial-gradient(
-            ellipse 40vw 24vh at 30% 40%,
-            var(--c1) 33%,
-            transparent 100%
-         ),
-         radial-gradient(
-            ellipse 40vw 24vh at 70% 40%,
-            var(--c2) 33%,
-            transparent 100%
-         );
+         radial-gradient(ellipse 40vw 24vh at 30% 40%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 40vw 24vh at 70% 40%, var(--c2) 33%, transparent 100%);
    }
 
    :root {
@@ -967,6 +940,10 @@ img.bill {
       height: 30px;
       font-size: 0.5rem;
    }
+
+   hr {
+      margin-top: 0.125rem;
+   }
 }
 
 @media (max-width: 992px) {
@@ -976,16 +953,8 @@ img.bill {
 
    .bg-gradient-bg {
       background:
-         radial-gradient(
-            ellipse 40vw 39vh at 30% 47%,
-            var(--c1) 33%,
-            transparent 100%
-         ),
-         radial-gradient(
-            ellipse 40vw 39vh at 70% 47%,
-            var(--c2) 33%,
-            transparent 100%
-         );
+         radial-gradient(ellipse 40vw 39vh at 30% 47%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 40vw 39vh at 70% 47%, var(--c2) 33%, transparent 100%);
    }
 
    .currency-box input {
@@ -1110,12 +1079,12 @@ img.bill {
 
    .bill-1 {
       z-index: 12;
-      transform: translateY(-1.15rem) scale(0.48);
+      transform: translateY(-1.25rem) scale(0.48);
    }
 
    .bill-2 {
       z-index: 11;
-      transform: translateY(0.5rem) rotate(-9deg) scale(0.48);
+      transform: translateY(0.4rem) rotate(-9deg) scale(0.48);
    }
 
    .shadow {
@@ -1286,16 +1255,8 @@ img.bill {
 
    .bg-gradient-bg {
       background:
-         radial-gradient(
-            ellipse 42vw 42vh at 30% 50%,
-            var(--c1) 33%,
-            transparent 100%
-         ),
-         radial-gradient(
-            ellipse 42vw 42vh at 70% 50%,
-            var(--c2) 33%,
-            transparent 100%
-         );
+         radial-gradient(ellipse 42vw 42vh at 30% 50%, var(--c1) 33%, transparent 100%),
+         radial-gradient(ellipse 42vw 42vh at 70% 50%, var(--c2) 33%, transparent 100%);
    }
 
    h5 {
