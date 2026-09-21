@@ -1,10 +1,5 @@
 export async function handler(event) {
-   const {
-      start_date,
-      end_date,
-      base,
-      symbols
-   } = event.queryStringParameters;
+   const { start_date, end_date, base, symbols } = event.queryStringParameters;
 
    // eslint-disable-next-line no-undef
    const API_KEY = process.env.CURRENCY_API_KEY;
@@ -18,8 +13,8 @@ export async function handler(event) {
       return {
          statusCode: 200,
          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
          },
          body: JSON.stringify(data),
       };

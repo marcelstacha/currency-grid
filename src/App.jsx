@@ -39,19 +39,7 @@ function App() {
    const windowWidth = useWindowWidth();
    const throttledSwitch = useThrottle(currencySwitch);
 
-   const {
-      data,
-      error,
-      dataArray,
-      dateArray,
-      highest,
-      lowest,
-      storageKey,
-      endDate,
-      first,
-      latest,
-      isFetching,
-   } = useGetCurrencyData(
+   const { data, error, dataArray, dateArray, highest, lowest, storageKey, endDate, first, latest, isFetching } = useGetCurrencyData(
       selectedCurrencies.currency1,
       selectedCurrencies.currency2
    );
@@ -177,12 +165,7 @@ function App() {
                   currencies={currencies}
                   selectedCurrency1={selectedCurrencies.currency1}
                   selectedCurrency2={selectedCurrencies.currency2}
-                  onClick={
-                     selectedCurrencies.currency1 !=
-                     selectedCurrencies.currency2
-                        ? throttledSwitch
-                        : undefined
-                  }
+                  onClick={selectedCurrencies.currency1 != selectedCurrencies.currency2 ? throttledSwitch : undefined}
                />
             </Card>
             <Card id="card-3" loading={isLoading}>
