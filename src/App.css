@@ -519,6 +519,10 @@ section:hover {
    cursor: pointer;
 }
 
+#card-4 .mid-card {
+   line-height: 1.55rem;
+}
+
 #card-6 {
    grid-column: span 2;
    position: unset;
@@ -721,7 +725,6 @@ input {
 
 /* 2. Bounding-Box (Schutzabstand) */
 .bill-container {
-   display: grid;
    place-items: center;
    width: 100%;
    height: 100%;
@@ -729,30 +732,31 @@ input {
 
 /* 3. DIE STARRE LEINWAND (Das Geheimnis für synchrones Skalieren) */
 .foreground-images {
-   display: grid;
    place-items: center;
    width: 100%;
    height: 100%;
-   position: absolute;
    inset: 0;
+   top: -0.4rem;
 }
 
 /* 4. Container deckungsgleich über die gesamte Leinwand spannen */
 .bill-1,
 .bill-2 {
    inset: 0; /* Zieht den Container über die vollen 100% der Leinwand */
-   display: grid;
+   position: absolute;
 }
 
 /* 5. Einmalig verschieben & drehen */
 .bill-1 {
    z-index: 12;
-   transform: translateY(-1.5rem) scale(0.75);
+   transform: translateY(-1.5rem) scale(0.6);
+   object-position: center bottom;
 }
 
 .bill-2 {
    z-index: 11;
-   transform: translateY(0.75rem) rotate(-9deg) scale(0.75);
+   transform: translateY(0.75rem) rotate(-9deg) scale(0.6);
+   object-position: center top;
 }
 
 /* 6. BILDER: Dürfen sich nur noch nach der Leinwand-Breite richten! */
@@ -768,6 +772,44 @@ img.bill {
 
 .shadow {
    box-shadow: 0 0.3rem 1.75rem rgba(0, 0, 0, 0.5);
+}
+
+#card-5 {
+   display: flex;
+   align-items: stretch;
+   overflow: hidden; /* Verhindert, dass die Scheine bei extremer Stauchung über die Kachel hinausragen */
+}
+
+/* 2. Die Rahmen-Container müssen relativ sein, damit "absolute" Kinder darin bleiben */
+.bill-container,
+.foreground-images {
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+
+/* 3. Bilder absolut und flächendeckend positionieren */
+.bill-1,
+.bill-2 {
+   position: absolute;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: contain; /* Behält das Seitenverhältnis exakt bei */
+   margin: auto; /* Sorgt für perfekte Zentrierung */
+}
+
+/* 4. Platz schaffen durch Skalierung (scale) und dynamisch verschieben (%) */
+/* scale(0.75) schrumpft die Scheine auf 75%. Dadurch entsteht ein flexibler unsichtbarer Rand im Container, der Platz für die Drehung und Verschiebung bietet. */
+.bill-1 {
+   z-index: 12;
+   /* Verschiebung richtet sich jetzt prozentual nach der Container-Höhe */
+   transform: translateY(-12%) scale(0.75);
+}
+
+.bill-2 {
+   z-index: 11;
+   transform: translateY(12%) rotate(-9deg) scale(0.75);
 }
 /* =========================================
    5. MEDIA QUERIES
@@ -853,18 +895,24 @@ img.bill {
       line-height: 1rem;
    }
 
+   .shadow {
+      box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.5);
+   }
+
+   #card-4 .mid-card {
+      line-height: 1.3rem;
+   }
+
    .bill-1 {
-      z-index: 12;
-      transform: translateY(-1.33rem) scale(0.6);
+      transform: translateY(-1.5rem) scale(0.62);
    }
 
    .bill-2 {
-      z-index: 11;
-      transform: translateY(0.75rem) rotate(-9deg) scale(0.6);
+      transform: translateY(0.75rem) rotate(-9deg) scale(0.62);
    }
 
-   .shadow {
-      box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.5);
+   .foreground-images {
+      top: 0rem;
    }
 }
 
@@ -909,6 +957,10 @@ img.bill {
    #card-7,
    #card-8 {
       height: 160px !important;
+   }
+
+   #card-4 .mid-card {
+      line-height: 0.95rem;
    }
 
    h5 {
@@ -959,6 +1011,10 @@ img.bill {
 
    hr {
       margin-top: 0.125rem;
+   }
+
+   .foreground-images {
+      top: 0.125rem;
    }
 }
 
@@ -1093,18 +1149,16 @@ img.bill {
       font-size: clamp(0.5rem, 5.3cqw, 1rem);
    }
 
+   .shadow {
+      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+   }
+
    .bill-1 {
-      z-index: 12;
-      transform: translateY(-1.25rem) scale(0.48);
+      transform: translateY(-1rem) scale(0.5);
    }
 
    .bill-2 {
-      z-index: 11;
-      transform: translateY(0.4rem) rotate(-9deg) scale(0.48);
-   }
-
-   .shadow {
-      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+      transform: translateY(0.25rem) rotate(-9deg) scale(0.5);
    }
 }
 
@@ -1123,16 +1177,6 @@ img.bill {
 
    .logos div {
       display: none;
-   }
-
-   .bill-1 {
-      z-index: 12;
-      transform: translateY(-1.15rem) scale(0.6);
-   }
-
-   .bill-2 {
-      z-index: 11;
-      transform: translateY(0.65rem) rotate(-9deg) scale(0.6);
    }
 
    .shadow {
@@ -1216,6 +1260,10 @@ img.bill {
       order: 4;
    }
 
+   #card-4 .mid-card {
+      line-height: 1.55rem;
+   }
+
    .title-header h1 {
       font-size: 1.2rem;
    }
@@ -1284,18 +1332,16 @@ img.bill {
       font-size: clamp(0.8rem, 9cqw, 1rem);
    }
 
+   .shadow {
+      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+   }
+
    .bill-1 {
-      z-index: 12;
-      transform: translateY(-1rem) scale(0.65);
+      transform: translateY(-1rem) scale(0.63);
    }
 
    .bill-2 {
-      z-index: 11;
-      transform: translateY(0.3rem) rotate(-9deg) scale(0.65);
-   }
-
-   .shadow {
-      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+      transform: translateY(0.25rem) rotate(-9deg) scale(0.63);
    }
 }
 
@@ -1330,16 +1376,6 @@ img.bill {
    .eighty,
    .mid-card {
       font-size: clamp(0.8rem, 9cqw, 1rem);
-   }
-
-   .bill-1 {
-      z-index: 12;
-      transform: translateY(-1.25rem) scale(0.8);
-   }
-
-   .bill-2 {
-      z-index: 11;
-      transform: translateY(0.65rem) rotate(-9deg) scale(0.8);
    }
 
    .shadow {
