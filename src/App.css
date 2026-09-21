@@ -99,6 +99,18 @@
    --react: #4ba6c0;
 }
 
+@property --c1 {
+   syntax: "<color>";
+   inherits: false;
+   initial-value: transparent;
+}
+
+@property --c2 {
+   syntax: "<color>";
+   inherits: false;
+   initial-value: transparent;
+}
+
 .bg-gradient-bg {
    position: fixed;
    inset: 0;
@@ -107,9 +119,13 @@
    z-index: 0;
    pointer-events: none;
    background:
-      radial-gradient(ellipse 25.5rem 26vh at 40% 55%, var(--c1) 33%, transparent 100%),
-      radial-gradient(ellipse 25.5rem 26vh at 60% 55%, var(--c2) 33%, transparent 100%);
+      radial-gradient(ellipse 25.5rem 26vh at 40% 55%, var(--c2) 33%, transparent 100%),
+      radial-gradient(ellipse 25.5rem 26vh at 60% 55%, var(--c1) 33%, transparent 100%);
    filter: var(--filter-bg);
+   animation: fadeIn 3s ease-out 1;
+   transition:
+      --c1 1s ease-in-out,
+      --c2 1s ease-in-out;
 }
 
 html,
@@ -766,8 +782,8 @@ img.bill {
 @media (max-width: 1680px) {
    .bg-gradient-bg {
       background:
-         radial-gradient(ellipse 33rem 33vh at 26% 50%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 33rem 33vh at 74% 50%, var(--c2) 33%, transparent 100%);
+         radial-gradient(ellipse 33rem 33vh at 26% 50%, var(--c2) 33%, transparent 100%),
+         radial-gradient(ellipse 33rem 33vh at 74% 50%, var(--c1) 33%, transparent 100%);
    }
 
    :root {
@@ -877,8 +893,8 @@ img.bill {
 @media (max-width: 1200px) {
    .bg-gradient-bg {
       background:
-         radial-gradient(ellipse 40vw 24vh at 30% 40%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 40vw 24vh at 70% 40%, var(--c2) 33%, transparent 100%);
+         radial-gradient(ellipse 40vw 24vh at 30% 40%, var(--c2) 33%, transparent 100%),
+         radial-gradient(ellipse 40vw 24vh at 70% 40%, var(--c1) 33%, transparent 100%);
    }
 
    :root {
@@ -953,8 +969,8 @@ img.bill {
 
    .bg-gradient-bg {
       background:
-         radial-gradient(ellipse 40vw 39vh at 30% 47%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 40vw 39vh at 70% 47%, var(--c2) 33%, transparent 100%);
+         radial-gradient(ellipse 40vw 39vh at 30% 47%, var(--c2) 33%, transparent 100%),
+         radial-gradient(ellipse 40vw 39vh at 70% 47%, var(--c1) 33%, transparent 100%);
    }
 
    .currency-box input {
@@ -1255,8 +1271,8 @@ img.bill {
 
    .bg-gradient-bg {
       background:
-         radial-gradient(ellipse 42vw 42vh at 30% 50%, var(--c1) 33%, transparent 100%),
-         radial-gradient(ellipse 42vw 42vh at 70% 50%, var(--c2) 33%, transparent 100%);
+         radial-gradient(ellipse 42vw 42vh at 30% 50%, var(--c2) 33%, transparent 100%),
+         radial-gradient(ellipse 42vw 42vh at 70% 50%, var(--c1) 33%, transparent 100%);
    }
 
    h5 {
