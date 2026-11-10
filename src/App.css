@@ -736,42 +736,8 @@ input {
    width: 100%;
    height: 100%;
    inset: 0;
-   top: -0.4rem;
-}
-
-/* 4. Container deckungsgleich über die gesamte Leinwand spannen */
-.bill-1,
-.bill-2 {
-   inset: 0; /* Zieht den Container über die vollen 100% der Leinwand */
-   position: absolute;
-}
-
-/* 5. Einmalig verschieben & drehen */
-.bill-1 {
-   z-index: 12;
-   transform: translateY(-1.5rem) scale(0.6);
-   object-position: center bottom;
-}
-
-.bill-2 {
-   z-index: 11;
-   transform: translateY(0.75rem) rotate(-9deg) scale(0.6);
-   object-position: center top;
-}
-
-/* 6. BILDER: Dürfen sich nur noch nach der Leinwand-Breite richten! */
-img.bill {
-   width: 100%; /* Nimmt maximal die Breite des Containers ein */
-   height: auto; /* Behält das korrekte Seitenverhältnis bei */
    object-fit: contain;
-   margin: 0 !important;
-   border-radius: 4px;
    will-change: transform, opacity;
-   align-self: anchor-center;
-}
-
-.shadow {
-   box-shadow: 0 0.3rem 1.75rem rgba(0, 0, 0, 0.5);
 }
 
 #card-5 {
@@ -789,28 +755,65 @@ img.bill {
 }
 
 /* 3. Bilder absolut und flächendeckend positionieren */
-.bill-1,
-.bill-2 {
+.bill-top,
+.bill-bottom {
    position: absolute;
    inset: 0;
    width: 100%;
    height: 100%;
    object-fit: contain; /* Behält das Seitenverhältnis exakt bei */
    margin: auto; /* Sorgt für perfekte Zentrierung */
+   filter: drop-shadow(0 0.15rem 0.25rem rgba(0, 0, 0, 0.55)) /* Kontaktschatten, nah */ drop-shadow(0 0.4rem 0.9rem rgba(0, 0, 0, 0.55));
+}
+.bill {
+   position: absolute;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   border-radius: 4px;
+   will-change: transform;
 }
 
-/* 4. Platz schaffen durch Skalierung (scale) und dynamisch verschieben (%) */
-/* scale(0.75) schrumpft die Scheine auf 75%. Dadurch entsteht ein flexibler unsichtbarer Rand im Container, der Platz für die Drehung und Verschiebung bietet. */
-.bill-1 {
+/*-20% offset*/
+.bill-top {
    z-index: 12;
-   /* Verschiebung richtet sich jetzt prozentual nach der Container-Höhe */
-   transform: translateY(-12%) scale(0.75);
+   object-position: center top;
+   transform: translateY(-8%) scale(0.77);
 }
 
-.bill-2 {
+.bill-bottom {
+   transform-origin: center bottom;
+   object-position: center bottom;
    z-index: 11;
-   transform: translateY(12%) rotate(-9deg) scale(0.75);
+   transform: rotate(-9deg) translateY(-12%) scale(0.77);
 }
+
+#card-5 {
+   display: flex;
+   align-items: stretch;
+   overflow: hidden;
+}
+
+/* Sicherheitsabstand zum Card-Rand */
+.bill-container {
+   display: block;
+   width: 100%;
+   height: 100%;
+   padding: 6% 5%;
+   box-sizing: border-box;
+   background: transparent;
+   border: 0;
+   cursor: pointer;
+}
+
+/* Bühne = Karte minus Padding */
+.bill-stage {
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+
 /* =========================================
    5. MEDIA QUERIES
 =========================================
@@ -895,24 +898,20 @@ img.bill {
       line-height: 1rem;
    }
 
-   .shadow {
-      box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.5);
+   img.bill {
+      max-width: 95%;
+   }
+   .bill-top {
+      z-index: 12;
+      object-position: center top;
+      transform: translateY(-4%) scale(0.77);
    }
 
-   #card-4 .mid-card {
-      line-height: 1.3rem;
-   }
-
-   .bill-1 {
-      transform: translateY(-1.5rem) scale(0.62);
-   }
-
-   .bill-2 {
-      transform: translateY(0.75rem) rotate(-9deg) scale(0.62);
-   }
-
-   .foreground-images {
-      top: 0rem;
+   .bill-bottom {
+      transform-origin: center bottom;
+      object-position: center bottom;
+      z-index: 11;
+      transform: rotate(-9deg) translateY(-16%) scale(0.77);
    }
 }
 
@@ -1011,10 +1010,6 @@ img.bill {
 
    hr {
       margin-top: 0.125rem;
-   }
-
-   .foreground-images {
-      top: 0.125rem;
    }
 }
 
@@ -1149,16 +1144,16 @@ img.bill {
       font-size: clamp(0.5rem, 5.3cqw, 1rem);
    }
 
-   .shadow {
-      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+   img.bill {
+      max-width: 100%;
    }
 
-   .bill-1 {
-      transform: translateY(-1rem) scale(0.5);
+   .bill-top {
+      transform: translateY(-8%) scale(0.77);
    }
 
-   .bill-2 {
-      transform: translateY(0.25rem) rotate(-9deg) scale(0.5);
+   .bill-bottom {
+      transform: rotate(-9deg) translateY(-12%) scale(0.77);
    }
 }
 
@@ -1177,10 +1172,6 @@ img.bill {
 
    .logos div {
       display: none;
-   }
-
-   .shadow {
-      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
    }
 }
 
@@ -1331,18 +1322,6 @@ img.bill {
    .mid-card {
       font-size: clamp(0.8rem, 9cqw, 1rem);
    }
-
-   .shadow {
-      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
-   }
-
-   .bill-1 {
-      transform: translateY(-1rem) scale(0.63);
-   }
-
-   .bill-2 {
-      transform: translateY(0.25rem) rotate(-9deg) scale(0.63);
-   }
 }
 
 @media (max-width: 400px) {
@@ -1378,7 +1357,11 @@ img.bill {
       font-size: clamp(0.8rem, 9cqw, 1rem);
    }
 
-   .shadow {
-      box-shadow: 0 0.3rem 1.25rem rgba(0, 0, 0, 0.5);
+   .bill-top {
+      transform: translateY(-3%) scale(0.77);
+   }
+
+   .bill-bottom {
+      transform: rotate(-9deg) translateY(-17%) scale(0.77);
    }
 }

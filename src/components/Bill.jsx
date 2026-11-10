@@ -1,7 +1,18 @@
 import { AnimatePresence, motion } from "motion/react";
 
-export default function Bill({ path, classes }) {
+export default function Bill({ path, classes, hovered }) {
    const isBlurred = classes.includes("blurred-bg");
+   const isBottom = classes.includes("bill-bottom");
+   const isTop = !isBottom;
+
+   let customOpacity = 1;
+   const opacityLow = 0.85;
+   if (isBottom) {
+      customOpacity = hovered ? 1 : opacityLow;
+   }
+   if (isTop) {
+      customOpacity = hovered ? opacityLow : 1;
+   }
 
    return (
       <>
@@ -13,9 +24,9 @@ export default function Bill({ path, classes }) {
                alt={path}
                style={{ gridArea: "1 / 1 / 2 / 2" }}
                initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
+               animate={{ opacity: customOpacity }}
                exit={{ opacity: 0 }}
-               transition={{ duration: 0.4, ease: "easeInOut" }}
+               transition={{ duration: 0.5, ease: "easeInOut" }}
             />
          </AnimatePresence>
       </>
