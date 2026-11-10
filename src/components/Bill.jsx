@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 
 export default function Bill({ path, classes, hovered }) {
-   const isBlurred = classes.includes("blurred-bg");
    const isBottom = classes.includes("bill-bottom");
    const isTop = !isBottom;
 
@@ -16,7 +15,7 @@ export default function Bill({ path, classes, hovered }) {
 
    return (
       <>
-         <AnimatePresence mode={isBlurred ? "popLayout" : "sync"}>
+         <AnimatePresence mode="sync">
             <motion.img
                key={path}
                src={path}
